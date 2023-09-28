@@ -2,8 +2,30 @@
 <html>
     <head>
         <title>Tunity</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
     </head>
     <body>
-        <h1>hello world</h1>
+        <div class="topnav">
+            <a class="navbar-brand" href="#">
+                <div class="logo-image">
+                      <img src="logo.png" width="45" height="45">
+                </div>
+                <a class="logo-name" href="#tunity">Tunity</a>
+            </a>
+            <div class="topnav-right">
+                <a class="active" href="#home">Home</a>
+                <a href="#signup">Sign Up</a>
+                <a href="#login">Log In</a>
+            </div>
+        </div>
+        <div class="playlist">
+            <div id="current">
+                <a href="#">Song Currently On</a>
+                <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+            </div>
+            <a href="#">Song Next</a>
+            <a href="#">Song After Next</a>
+        </div>
     </body>
 </html>
