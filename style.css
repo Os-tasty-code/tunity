@@ -9,8 +9,8 @@ body {
     background-color: #e3f2fd;
     overflow: hidden;
     font-family: "Trirong", serif;
-    position: fixed;
-    height: 20%;
+    /* position: fixed; */
+    height: 10%;
     width: 100%;
   }
   
@@ -18,7 +18,7 @@ body {
   .topnav-right a {
     float: left;
     color: #767676;
-    padding-top: 7.5vh;
+    padding-top: 2.25vh;
     padding-left: 3vw;
     padding-right: 3vw;
     text-decoration: inherit;
@@ -45,20 +45,18 @@ body {
 .logo-image {
   float: left;
   text-align: center;
-  padding-top: 15px;
-  padding-bottom: 5px;
-  padding-left: 24px;
-  padding-right: 10px;
+  padding-top: 1vh;
+  padding-left: 3vw;
+  padding-right: 3vw;
 }
 
 .logo-name {
     float: left;
     color: rgb(45, 45, 45);
     text-align: center;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    padding-left: 0px;
-    padding-right: 24px;
+    padding-top: 1vh;
+    padding-left: 5px;
+    padding-right: 3vw;
     text-decoration: none;
     font-size: 25px;
 }
@@ -68,8 +66,7 @@ body {
 .playlist {  
   height: 85%; /* 100% Full-height */
   width: 20%;
-  z-index: 1; /* Stay on top */
-  top: 20%; /* Stay at the top */
+  top: 10.5%; 
   background-color: #111; /* Black*/
   text-decoration: inherit;
   left: 0;
@@ -80,8 +77,8 @@ body {
 }
 
 .playlist a {
-  padding: 8px 8px 8px 32px;
-  font-size: 25px;
+  padding: 8px 8px 8px 10px;
+  font-size: 15px;
   color: white;
   display: block;
   transition: 0.3s;
@@ -94,50 +91,29 @@ body {
   display: block;
 }
 
-input[type="range"] {
-  /* removing default appearance */
-  -webkit-appearance: none;
-  appearance: none; 
-  /* creating a custom design */
-  width: 90%;
-  /* cursor: pointer; */
-  outline: none;
-  /*  slider progress trick  */
+.bar-background{
+    background-color: #f1f1f1;
+    height: 3vh;
+    border: 8px 8px 8px 32px;
+}
+
+.progress{
+  color: #fff!important;
+  background-color: #09cfda!important;
+  height:100%;
+  width: 33%;
+  padding: 0px;
+  display: block;
+}
+
+/*----------------------------------------*/
+
+.content {
+  position: relative;
+  left: 20%;
+  padding: 10px 10px;
+  height: 85vh;
+  width: 80%;
+  background-color: #09cfda!important;
   overflow: hidden;
-}
-
-/* Track: webkit browsers */
-input[type="range"]::-webkit-slider-runnable-track {
-  height: 15px;
-  background: #ccc;
-  border-radius: 0px;
-  width: 1px;
-}
-
-.slider {
-  -webkit-appearance: none;
-  width: 100%;
-  height: 25px;
-  background: #d3d3d3;
-  outline: none;
-  opacity: 0.7;
-}
-
-.slider:hover {
-  opacity: 1;
-}
-
-.slider::-webkit-slider-thumb {
-  width: 1px;
-  height: 25px;
-  background: #04AA6D;
-  cursor: pointer;
-  /* removing default appearance */
-  -webkit-appearance: none;
-  appearance: none; 
-  height: 25px;
-  /* creating a custom design */
-  height: 100%;
-  width: 1px; 
-  box-shadow: -407px 0 0 400px #09cfda;
 }
