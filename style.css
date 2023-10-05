@@ -25,6 +25,7 @@ body {
     font-size: 17px;
   }
   
+  
   /* Change the color of links on hover */
   .topnav a:hover {
     color: rgb(45, 45, 45);
@@ -109,6 +110,7 @@ body {
 /*----------------------------------------*/
 
 .content {
+  display: flex;
   position: relative;
   left: 20%;
   padding: 10px 10px;
@@ -169,5 +171,189 @@ body {
   cursor: pointer;
 }
 /* ----- End login/registration pages ----- */
+/* ----- Begin listener homepage ----- */
+.request-container legend {
+  font-size: 32px;
+  color: #fb169a;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.request-container .input-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.request-container input[type="text"] {
+  font-size: 24px;
+  color: #fb169a;
+  padding: 10px;
+  margin: 10px 0;
+  width: 97.5%; 
+}
+
+.request-container input[type="button"] {
+  font-size: 24px;
+  color: white;
+  background-color: #fb169a;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  width: 100%; 
+}
+
+.request-container ol {
+  font-size: 24px;
+  padding-left: 20px;
+  list-style-type: none;
+}
+
+.request-container li {
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #767676;
+  border-radius: 10px;
+  color: #fff; 
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.list-item-text {
+  flex-grow: 1;
+}
+
+.list-item-approved,
+.list-item-pending,
+.list-item-reject {
+  background-size: cover; 
+  width: 30px;
+  height: 30px; 
+  margin-left: 10px; 
+}
+
+.list-item-reject {
+  background-image: url('request-reject.svg');
+}
+
+.list-item-approved{
+  background-image: url('request-approved.png');
+}
+
+.list-item-pending{
+  background-image: url('request-pending.svg'); 
+}
+
+.cancel-button {
+  background-color: #fb169a;
+  color: white;
+  padding: 5px 10px;
+  font-size: 24px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.cancel-dialog {
+  border: 2px solid #fb169a;
+  border-radius: 5px;
+  padding: 10px;
+  text-decoration: inherit;
+  background-color: #767676;
+  font-size: 24px;
+  color: white;
+
+}
 
 
+/* ----- End listener homepage ----- */
+/* ----- Begin default homepage ----- */
+.left-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.dj-container,
+.artist-container,
+.request-container {
+  flex: 1;
+  margin: 5px; 
+  border-radius: 10px; 
+  padding: 10px; 
+  background-color: #111; 
+  display: flex;
+  flex-direction: column;
+}
+
+
+.dj-container h1,
+.artist-container h1,
+.request-container h1{
+  padding-left: 20px;
+  size: 32px;
+  color: #fb169a;
+  position: relative;
+}
+
+.content-button {
+  background-color: #fb169a;
+  color: white;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.content figure {
+  display: flex;
+  flex-direction: column;
+}
+
+.content figcaption {
+  order: -1;
+  padding-left: 20px;
+  font-size: 32px; 
+  color: #fb169a;
+  position: relative;
+}
+
+/*Place image below text*/
+.content img {
+  order: 1; 
+}
+
+.warning-icon {
+  background-size: cover; 
+  width: 100px;
+  height: 100px; 
+  background-image: url('warning.png');
+  margin: auto;
+}
+.warning-text {
+  background-color: #767676;
+  padding: 20px; 
+  border-radius: 10px; 
+  text-align: center; 
+  font-size: 32px;
+  margin: auto;
+  width: 80%;
+  height: 80%;
+}
+
+.warning-text a {
+  display: inline-block;
+  background-color: #fb169a;
+  padding: 10px;
+  border-radius: 10px; 
+  margin: 5px; 
+  text-decoration: none; 
+  color: #e3f2fd; 
+}
+/* ----- End default homepage ----- */
