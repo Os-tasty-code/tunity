@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tunity</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
+        <style>
+            body {
+                font-family: "Trirong", serif;
+                text-decoration: none;
+                margin: 0px;
+            }
+
+            .topnav {
+                background-color: #e3f2fd;
+                overflow: hidden;
+                font-family: "Trirong", serif;
+                /* position: fixed; */
+                height: 10%;
+                width: 100%;
+            }
+            
+            /* Style the links inside the navigation bar */
+            .topnav-right a {
+                float: left;
+                color: #767676;
+                padding-top: 2.25vh;
+                padding-left: 3vw;
+                padding-right: 3vw;
+                text-decoration: inherit;
+                font-size: 17px;
+            }
+            
+            /* Change the color of links on hover */
+            .topnav a:hover {
+                color: rgb(45, 45, 45);
+            }
+            
+            /* Add a color to the active/current link */
+            .topnav a.active {
+                /*background-color: #d86ac2;*/
+                color: rgb(45, 45, 45);
+            }
+
+            /* Right-aligned section inside the top navigation */
+            .topnav-right {
+            
+            float: right;
+            }
+
+            .logo-image {
+            float: left;
+            text-align: center;
+            padding-top: 1vh;
+            padding-left: 3vw;
+            padding-right: 3vw;
+            }
+
+            .logo-name {
+                float: left;
+                color: rgb(45, 45, 45);
+                text-align: center;
+                padding-top: 1vh;
+                padding-left: 5px;
+                padding-right: 3vw;
+                text-decoration: none;
+                font-size: 25px;
+            }
+
+            /*----------------------------------------*/
+
+            .playlist {  
+            height: 85%; /* 100% Full-height */
+            width: 20%;
+            top: 10.5%; 
+            background-color: #111; /* Black*/
+            text-decoration: inherit;
+            left: 0;
+            display:flex;
+            flex-direction: column;
+            position: absolute;
+            bottom: 0;
+            }
+
+            .playlist a {
+            padding: 8px 8px 8px 10px;
+            font-size: 15px;
+            color: white;
+            display: block;
+            transition: 0.3s;
+            text-decoration: inherit;
+            }
+
+
+            #current {
+            background: #fb169a;
+            display: block;
+            }
+
+            .bar-background{
+                background-color: #f1f1f1;
+                height: 3vh;
+                border: 8px 8px 8px 32px;
+            }
+
+            .progress{
+            color: #fff!important;
+            background-color: #09cfda!important;
+            height:100%;
+            width: 33%;
+            padding: 0px;
+            display: block;
+            }
+
+            /*----------------------------------------*/
+
+            .content {
+            position: relative;
+            left: 20%;
+            padding: 10px 10px;
+            height: 85vh;
+            width: 80%;
+            background-color: #09cfda!important;
+            overflow: hidden;
+            text-decoration: inherit;
+            }
+            .queue {  
+            width: 40%;
+            background-color: #111; /* Black*/
+            text-decoration: inherit;
+            top:0;
+            left: 0;
+            display:flex;
+            flex-direction: column;
+            position: absolute;
+            }
+
+            .song {
+            padding: 8px 8px 8px 10px;
+            font-size: 15px;
+            color: white;
+            display: block;
+            transition: 0.3s;
+            text-decoration: inherit;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="topnav">
+            <a class="navbar-brand" href="#">
+                <div class="logo-image">
+                    <img src="../logo.png" width="45" height="45">
+                </div>
+                <a class="logo-name" href="#tunity">Tunity</a>
+            </a>
+            <div class="topnav-right">
+                <a class="active" href="index.html">Home</a>
+                <a href="signup.html">Sign Up</a>
+                <a href="login.html">Log In</a>
+            </div>
+        </div>
+        <div class="playlist">
+            <div id="current">
+                <a href="#">Song 1</a>
+                <div class="bar-background">
+                    <div class="progress"></div>
+                </div>
+            </div>
+            <a href="#">Song 2</a>
+            <a href="#">Song 3</a>
+            <a href="#">Song 4</a>
+            <a href="#">Song 5</a>
+            <a href="#">Song 6</a>
+            <a href="#">Song 7</a>
+            <a href="#">Song 8</a>
+            <a href="#">Song 9</a>
+            <a href="#">Song 10</a>
+            <a href="#">Song 11</a>
+        </div>
+        <div class="content">
+            <div class="queue">
+                <div id="current" style="flex-direction:column;">
+                    <h4>Queue</h4>
+                    <p>Songs in Queue: 3</p>
+                </div>
+                <div id="song" style="color: #767676; -webkit-appearance: none;padding: 8px 8px 8px 10px;
+                font-size: 15px;">
+                    <p><a href="#" style="text-decoration:none;color: white;">Song 11</a> submitted by <a href="#" style="text-decoration:none;color: white;">User 1</a></p>
+                    <button style="background-color: #afffa1;">✓</button>
+                    <button style="background-color: #e66363;">✗</button>
+                </div>
+                <div id="song" style="color: #767676; -webkit-appearance: none;padding: 8px 8px 8px 10px;
+                font-size: 15px;">
+                    <p><a href="#" style="text-decoration:none;color: white;">Song 12</a> submitted by <a href="#" style="text-decoration:none;color: white;">User 2</a></p>
+                    <button style="background-color: #afffa1;">✓</button>
+                    <button style="background-color: #e66363;">✗</button>
+                </div>
+                <div id="song" style="color: #767676; -webkit-appearance: none;padding: 8px 8px 8px 10px;
+                font-size: 15px;">
+                    <p><a href="#" style="text-decoration:none;color: white;">Song 13</a> submitted by <a href="#" style="text-decoration:none;color: white;">User 3</a></p>
+                    <button style="background-color: #afffa1;">✓</button>
+                    <button style="background-color: #e66363;">✗</button>
+                </div>
+            </div>  
+        </div>
+    </body>
+</html>
