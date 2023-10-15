@@ -9,16 +9,16 @@ body {
    background-color: #e3f2fd;
     overflow: hidden;
     font-family: "Trirong", serif;
-    /* display: inline-block; */
     height: 10%;
     width: 100%;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
   }
   
   /* Style the links inside the navigation bar */
   .topnav-right a {
     float: left;
     color: #767676;
-    padding-top: 0vh;
     padding-left: 3vw;
     padding-right: 3vw;
     text-decoration: inherit;
@@ -40,8 +40,6 @@ body {
   /* Right-aligned section inside the top navigation */
 .topnav-right {
   float: right;
-  /* padding-top: 1vh;
-  padding-bottom: 1vh; */
 }
 
 .img-navbar {
@@ -77,8 +75,8 @@ body {
   left: 0;
   display: block;
   flex-direction: column;
-  /* position: absolute; */
-  bottom: 0;
+  position: absolute;
+  top: 10;
 }
 
 .playlist a {
@@ -117,7 +115,7 @@ body {
   display: flex;
   position: relative;
   left: 20%;
-  padding: 10px 10px;
+  padding: 1vw 1vw;
   height: 85vh;
   width: 80%;
   background-color: #09cfda!important;
