@@ -67,7 +67,7 @@ body {
 
 /*----------------------------------------*/
 
-.playlist {  
+#playlist {  
   height: 90%; 
   width: 20%;
   background-color: #282828; 
@@ -79,13 +79,19 @@ body {
   top: 10;
 }
 
-.playlist a {
+#playlist a {
   padding: 8px 8px 8px 10px;
   font-size: 15px;
   color: #767676;
   display: block;
   transition: 0.3s;
   text-decoration: inherit;
+}
+
+#playlist ol {
+  list-style: none!important;
+  padding: 0px 0px 0px 0px;
+  margin: 0;
 }
 
 
