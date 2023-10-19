@@ -4,20 +4,6 @@
         <title>Tunity</title>
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
-
-        <script>
-          function showCancelDialog(button) {
-            button.parentElement.querySelector(".cancel-dialog").showModal();
-          }
-
-          function closeCancelDialog(button) {
-            button.parentElement.closest(".cancel-dialog").close();
-          }
-
-          function cancelRequest(button) {
-            button.parentElement.closest(".cancel-dialog").close();
-          }
-        </script>
         <script src="basic.js"></script>
     </head>
     <body>
@@ -46,6 +32,8 @@
             <div id="current">
               <li><a href="#">Song 1</a></li>
               <div class="bar-background">
+                  <audio id="song-audio" type="audio/mpeg"></audio>
+                  <button id="toggle-song" onclick="toggle()"></button>
                   <div class="progress"></div>
               </div>
             </div>
@@ -57,75 +45,5 @@
             <li><a href="#">Song 7</a></li>
             <li><a href="#">Recommend Songs!</a></li>
           </ol>
-            <!-- <div id="current">
-                <a href="#">Song 1</a>
-                <div class="bar-background">
-                    <div class="progress"></div>
-                </div>
-            </div>
-            <a href="#">Song 2</a>
-            <a href="#">Song 3</a>
-            <a href="#">Song 4</a>
-            <a href="#">Song 5</a>
-            <a href="#">Song 6</a>
-            <a href="#">Song 7</a>
-            <a href="#">Song 8</a>
-            <a href="#">Song 9</a>
-            <a href="#">Song 10</a>
-            <a href="#">Song 11</a> -->
-
-        </div>
-        <div class="content">
-<!-- 
-
-          <div class="left-container">
-            <div class="dj-container">
-              <figure>
-                <img class="dj-art" style="padding-left: 40px;" src="dj-profile-pic.jpg"  width="300" height="300"/>
-                <figcaption> DJ Ella </figcaption>
-              </figure>
-              <div class="content-button">
-                <a href="#djs-schedule" style="color: white;"> See DJs and Schedule </a>
-              </div>
-            </div>
-            <div class="artist-container">
-              <figure>
-                <img class="alblum-art" style="padding-left: 40px;" src="alblum-art.jpg" width="300" height="300"/>
-                <figcaption> Marvin Gaye - What's Going On</figcaption>
-              </figure>
-            </div>
-          </div>
-
-
-          <div class="request-container">
-            <form>
-              <legend>Suggest a song</legend>
-              <input type="text" name="songRequest" placeholder="Enter a song to request here">
-              <input type="button" value="Submit">
-            </form>
-            <ol>
-              <li class="list-item">
-                  <span class="list-item-text">My Girl - The Temptations - APPROVED</span>
-                  <div class="list-item-approved"></div>
-              </li>
-              <li class="list-item">
-                  <span class="list-item-text">The Wheels on the bus - REJECTED</span>
-                  <div class="list-item-reject"></div>
-              </li>
-              <li class="list-item">
-                  <span class="list-item-text">Baby Love - The Supremes - PENDING</span>
-                  <button class="cancel-button" onclick="showCancelDialog(this)">Cancel</button>
-                  <dialog class="cancel-dialog">
-                      Are you sure you want to cancel this request?
-                      <br>
-                      <button  class="cancel-button" style="background-color:black" onclick="closeCancelDialog(this)">No</button>
-                      <button class="cancel-button" style="background-color:black" onclick="cancelRequest(this)">Yes</button>
-                  </dialog>
-                  <div class="list-item-pending"></div>
-                  
-              </li>
-          </ol>
-          </div>
-        </div> -->
     </body>
 </html>

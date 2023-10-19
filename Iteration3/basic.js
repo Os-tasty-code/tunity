@@ -1,10 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
+    /* start song playing */
+    toggle();
     /* progress bar changes over time */
     let prog = document.getElementsByClassName("progress")[0];
     let list = document.getElementById("playlist").children[0];
     let w = 0;
     let s = 1;
-    let dur = Math.ceil(Math.random() * 50) + 50;
+    let dur = document.getElementById("song-audio").duration;
     console.log(dur);
     setInterval(() => {
         w += (dur/100);
@@ -23,3 +25,14 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }, 1)
 });
+
+/*onclick function for play button*/
+
+function toggle() {
+    let button = document.getElementById("toggle-song");
+    let song = document.getElementById("song-audio");
+    console.log(song);
+    button.innerHTML = "▶";
+    song.setAttribute("src", "Song-1.mp3");
+    song.play();
+}
