@@ -180,9 +180,17 @@ body {
 }
 /* ----- End login/registration pages ----- */
 /* ----- Begin listener homepage ----- */
+/* #351e7b pruple
+#190061 darkblue
+#767676 light gray playlsit text?
+#282828 dark gray playlist
+#3500d3 light blue
+
+
+*/
 .request-container legend {
   font-size: 32px;
-  color: #fb169a;
+  color: white;
   text-align: center;
   padding-bottom: 10px;
 }
@@ -197,7 +205,7 @@ body {
 
 .request-container input[type="text"] {
   font-size: 24px;
-  color: #fb169a;
+  color: black;
   padding: 10px;
   margin: 10px 0;
   width: 97.5%; 
@@ -206,7 +214,7 @@ body {
 .request-container input[type="button"] {
   font-size: 24px;
   color: white;
-  background-color: #fb169a;
+  background-color: #3500d3;
   border: none;
   padding: 10px 20px;
   cursor: pointer;
@@ -222,7 +230,7 @@ body {
 .request-container li {
   margin: 10px 0;
   padding: 10px;
-  background-color: #767676;
+  background-color: #190061;
   border-radius: 10px;
   color: #fff; 
 }
@@ -247,19 +255,19 @@ body {
 }
 
 .list-item-reject {
-  background-image: url('request-reject.svg');
+  background-image: url('./images/request-reject.svg');
 }
 
 .list-item-approved{
-  background-image: url('request-approved.png');
+  background-image: url('./images/request-approved.png');
 }
 
 .list-item-pending{
-  background-image: url('request-pending.svg'); 
+  background-image: url('./images/request-pending.png'); 
 }
 
 .cancel-button {
-  background-color: #fb169a;
+  background-color: #3500d3;
   color: white;
   padding: 5px 10px;
   font-size: 24px;
@@ -269,13 +277,13 @@ body {
 }
 
 .cancel-dialog {
-  border: 2px solid #fb169a;
+  border: 2px solid #282828;
   border-radius: 5px;
   padding: 10px;
   text-decoration: inherit;
   background-color: #767676;
   font-size: 24px;
-  color: white;
+  color: #282828;
 
 }
 
@@ -295,7 +303,7 @@ body {
   margin: 5px; 
   border-radius: 10px; 
   padding: 10px; 
-  background-color: #111; 
+  background-color: #282828; 
   display: flex;
   flex-direction: column;
 }
@@ -311,7 +319,7 @@ body {
 }
 
 .content-button {
-  background-color: #fb169a;
+  background-color: #3500d3;
   color: white;
   padding: 10px;
   margin-top: 10px;
@@ -328,7 +336,7 @@ body {
   order: -1;
   padding-left: 20px;
   font-size: 32px; 
-  color: #fb169a;
+  color: white;
   position: relative;
 }
 
@@ -341,7 +349,7 @@ body {
   background-size: cover; 
   width: 100px;
   height: 100px; 
-  background-image: url('warning.png');
+  background-image: url('./images/warning.png');
   margin: auto;
 }
 .warning-text {
