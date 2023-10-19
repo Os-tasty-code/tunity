@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tunity</title>
+        <link rel="stylesheet" href="schedule.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
+
+        <script>
+          function showCancelDialog(button) {
+            button.parentElement.querySelector(".cancel-dialog").showModal();
+          }
+
+          function closeCancelDialog(button) {
+            button.parentElement.closest(".cancel-dialog").close();
+          }
+
+          function cancelRequest(button) {
+            button.parentElement.closest(".cancel-dialog").close();
+          }
+        </script>
+        <script src="schedule.js"></script>
+    </head>
+    <body>
+        <div class="topnav">
+            <a class="navbar-brand" href="#">
+                <img src="../logo.png" class="logo-image" href="#profile" width="50vh" height="50vh">
+              <a class="logo-name" href="#tunity">Tunity</a>
+            </a>
+          
+            <div class="topnav-right">
+              <a class = "img-navbar" href="#settings">
+                <img src="../settings-gear.png" width="40" height="40" style="padding-top:0.75vh">
+              </a>
+              <a class="active" href="schedule.html" style="padding-top: 1.25vh;">Schedule</a>
+              <a href="playlist.html" style="padding-top: 1.25vh;">Playlist</a>
+              <a class="img-navbar" href="#profile">
+                <img src="../user-profile-pic.png" width="45" height="45" style="padding-top:0.5vh">
+              </a>
+              <a href="index.html" style="padding-top: 1.25vh;">Log Out</a>
+            </div>
+          </div>
+
+          
+          
+        <div id="playlist">
+          <ol>
+            <div id="current">
+              <li><a href="#">Song 1</a></li>
+              <div class="bar-background">
+                  <div class="progress"></div>
+              </div>
+            </div>
+            <li><a href="#">Song 2</a></li>
+            <li><a href="#">Song 3</a></li>
+            <li><a href="#">Song 4</a></li>
+            <li><a href="#">Song 5</a></li>
+            <li><a href="#">Song 6</a></li>
+            <li><a href="#">Song 7</a></li>
+            <li><a href="#">Recommend Songs!</a></li>
+          </ol>
+        </div>
+        <div class="content">
+            <div class="grid-header">
+                <h2>Master Schedule</h2>
+            </div>
+            <div id="grid-container" class="grid-container">
+                <div class="grid-item-header">Sun</div>
+                <div class="grid-item-header">Mon</div>
+                <div class="grid-item-header">Tue</div>  
+                <div class="grid-item-header">Wed</div>
+                <div class="grid-item-header">Thu</div>
+                <div class="grid-item-header">Fri</div>  
+                <div class="grid-item-header">Sat</div>
+            </div>
+
+            <div name="form-popup" class="form-popup" id="changeDJ">
+                <form class="form-container" onsubmit="submitDJ();return false">
+                  <h1>Change DJ</h1>
+
+                  New DJ: <input id="djcode" type="text" name="dj">
+                  <input type="submit" value="Submit">
+              
+                  <!--<label for="dj"><b>New DJ</b></label>
+                  <input type="text" placeholder="Enter DJ Code" name="dj">
+              
+                  <button id="submitdj" type="submit" class="btn" onclick="alert('Button was clicked!')">Submit</button>-->
+                  <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

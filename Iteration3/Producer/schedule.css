@@ -1,0 +1,301 @@
+/* Add a black background color to the top navigation */
+body {
+    font-family: "Trirong", serif;
+    text-decoration: none;
+    margin: 0px;
+  }
+  
+  .flex-container {
+    display: flex;
+  }
+
+  .flex-container > div {
+    overflow: hidden;
+  }
+
+  .topnav {
+      background-color: #3500d3;
+      overflow: hidden;
+      font-family: "Trirong", serif;
+      /* position: fixed; */
+      height: 10%;
+      width: 100%;
+    }
+    
+    /* Style the links inside the navigation bar */
+    .topnav-right a {
+      float: left;
+      color: #bfbfbf;
+      padding-top: 2.25vh;
+      padding-left: 3vw;
+      padding-right: 3vw;
+      text-decoration: inherit;
+      font-size: 17px;
+    }
+    
+    /* Change the color of links on hover */
+    .topnav a:hover {
+      color: #f1f1f1;
+    }
+    
+    /* Add a color to the active/current link */
+    .topnav a.active {
+      /*background-color: #d86ac2;*/
+      color: #f1f1f1;
+    }
+  
+    /* Right-aligned section inside the top navigation */
+  .topnav-right {
+    
+    float: right;
+  }
+  
+  .logo-image {
+    float: left;
+    text-align: center;
+    padding-top: 1vh;
+    padding-left: 3vw;
+    padding-right: 3vw;
+  }
+  
+  .logo-name {
+      float: left;
+      color: #ffffff;
+      text-align: center;
+      padding-top: 1vh;
+      padding-left: 5px;
+      padding-right: 3vw;
+      text-decoration: none;
+      font-size: 25px;
+  }
+  
+  /*----------------------------------------*/
+  
+  #playlist {  
+    height: 90%; 
+    width: 20%;
+    background-color: #282828; 
+    text-decoration: inherit;
+    left: 0;
+    display: block;
+    flex-direction: column;
+    position: absolute;
+    top: 10;
+  }
+  
+  #playlist a {
+    padding: 8px 8px 8px 10px;
+    font-size: 15px;
+    color: #767676;
+    display: block;
+    transition: 0.3s;
+    text-decoration: inherit;
+  }
+  
+  #playlist ol {
+    list-style: none!important;
+    padding: 0px 0px 0px 0px;
+    margin: 0;
+  }
+  
+  
+  #current {
+    background: #190061;
+    display: block;
+  }
+  
+  .bar-background{
+      background-color: #351e7b;
+      height: 3vh;
+      border: 8px 8px 8px 8px;
+  }
+  
+  .progress{
+    color: #351e7b!important;
+    background-color: #f1f1f1!important;
+    height:100%;
+    width: 33%;
+    padding: 0px;
+    display: block;
+  }
+  
+  /*----------------------------------------*/
+  
+  .content {
+    position: relative;
+    width: 78.6%;
+    height: 90vh;
+    left: 20%;
+    padding: 10px 10px;
+    /*position: relative;
+    left: 20%;
+    /*padding: 10px 10px;*/
+    /*height: 85vh;
+    width: 80%;*/
+    background-color: #0c0032!important;
+    overflow: hidden !important;
+  }
+
+  /* Style the header */
+  .grid-header {
+    /*grid-area: header;*/
+    background-color: #190061;
+    padding: 0.1px;
+    text-align: center;
+    font-size: 20px;
+    color: #ffffff;
+  }
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto;
+    background-color: #282828;
+    padding: 10px;
+  }
+
+  .grid-item-header {
+    background-color: #3500d3;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 20px;
+    text-align: center;
+    color: #ffffff;
+  }
+
+  .grid-item-a {
+    background-color: #0c0032;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 15px;
+    text-align: center;
+    color: #e3e3e3;
+  }
+
+  .grid-item-b {
+    background-color: #190061;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 15px;
+    text-align: center;
+    color: #e3e3e3;
+  }
+
+  .grid-item-c {
+    background-color: #200080;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 15px;
+    text-align: center;
+    color: #e3e3e3;
+  }
+
+  .grid-item-d {
+    background-color: #28029a;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 15px;
+    text-align: center;
+    color: #e3e3e3;
+  }
+
+  .grid-item-none {
+    background-color: #7c51ff;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 15px;
+    text-align: center;
+    color: #e3e3e3;
+  }
+
+  /* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+/* The popup form - hidden by default */
+.form-popup {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    right: 15px;
+    border: 3px solid #f1f1f1;
+    z-index: 9;
+  }
+  
+  /* Add styles to the form container */
+  .form-container {
+    max-width: 300px;
+    padding: 10px;
+    background-color: white;
+  }
+  
+  /* Full-width input fields */
+  .form-container input[type=text], .form-container input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+  }
+  
+  /* When the inputs get focus, do something */
+  .form-container input[type=text]:focus, .form-container input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+  }
+  
+  /* Set a style for the submit/login button */
+  .form-container .btn {
+    background-color: #04AA6D;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom:10px;
+    opacity: 0.8;
+  }
+  
+  /* Add a red background color to the cancel button */
+  .form-container .cancel {
+    background-color: red;
+  }
+  
+  /* Add some hover effects to buttons */
+  .form-container .btn:hover, .open-button:hover {
+    opacity: 1;
+  }
+  

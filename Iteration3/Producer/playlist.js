@@ -1,12 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
-    /* start song playing */
-    toggle();
     /* progress bar changes over time */
     let prog = document.getElementsByClassName("progress")[0];
     let list = document.getElementById("playlist").children[0];
     let w = 0;
     let s = 1;
-    let dur = document.getElementById("song-audio").duration;
+    let dur = Math.ceil(Math.random() * 50) + 50;
     console.log(dur);
     setInterval(() => {
         w += (dur/100);
@@ -24,15 +22,28 @@ document.addEventListener("DOMContentLoaded", () => {
             document.getElementById("current").children[0].children[0].innerHTML = "Stay Tuned for More Songs!";
         }
     }, 1)
+
+    const buttons = [
+        { buttonText: 'Add' },
+        { buttonText: 'Add' },
+        { buttonText: 'Add' },
+    ]
+    // Get parent div in which you want to add buttons
+    const parent = document.getElementById("grid-container");
+    
+    // In for loop, set "i" to be lower than number length of array.
+    for(let i = 0; i < buttons.length; i++) {
+        // Create button node and add innerHTML (innerHTML is stuff that goes between <></> tags).
+        // Since "elements" is an array, you select current iteration of it with [i]
+        let button = document.createElement("button");
+        button.classList.add("grid-item-button");
+        button.innerHTML = buttons[i].buttonText;
+        console.log("button text: " + button.innerHTML);
+        button.onclick = addSong;
+        parent.appendChild(button);
+    }
 });
 
-/*onclick function for play button*/
-
-function toggle() {
-    let button = document.getElementById("toggle-song");
-    let song = document.getElementById("song-audio");
-    console.log(song);
-    button.innerHTML = "▶";
-    song.setAttribute("src", "Song-1.mp3");
-    song.play();
+function addSong() {
+    alert('Song added to playlist!');
 }
