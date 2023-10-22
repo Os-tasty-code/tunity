@@ -94,10 +94,13 @@ body {
   margin: 0;
 }
 
-
 #current {
   background: #190061;
   display: block;
+}
+
+#current a {
+  color: white;
 }
 
 .bar-background{
@@ -106,15 +109,55 @@ body {
     border: 8px 8px 8px 8px;
 }
 
-.progress{
-  color: #351e7b!important;
-  background-color: #f1f1f1!important;
-  height:100%;
-  width: 33%;
+.progress {
+  -webkit-appearance: none;
+  color: #3500d3;
+  fill: #ffffff!important;
+  height: 100%;
+  width: 100%;
   padding: 0px;
   display: block;
+  margin: 0;
 }
 
+.progress::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 1px;
+  height: 3vh;
+  background: #3500d3;
+  cursor: pointer;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+
+  @media screen and (-webkit-min-device-pixel-ratio:0) {
+    & {
+      overflow: hidden;
+      -webkit-appearance: none;
+      background-color: #ffffff!important;
+    }
+
+    &::-webkit-slider-thumb {
+      width: 1px;
+      -webkit-appearance: none;
+      height: 40px;
+      cursor: ew-resize;
+      background: #fff;
+      box-shadow: -340px 0 0 340px #3500d3, inset 0 0 0 40px #3500d3;
+      border-radius: 50%;
+      position: relative;
+    }
+  }
+}
+
+#toggle-song {
+  background: #190061;
+  color: #ffffff;
+  border:none;
+  float: right;
+}
 /*----------------------------------------*/
 
 .content {

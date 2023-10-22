@@ -30,11 +30,13 @@
         <div id="playlist">
           <ol>
             <div id="current">
-              <li><a href="#">Song 1</a></li>
+              <li>
+                <button id="toggle-song" onclick="toggle()"></button>
+                <a href="#">Song 1</a>
+              </li>
               <div class="bar-background">
                   <audio id="song-audio" type="audio/mpeg"></audio>
-                  <button id="toggle-song" onclick="toggle()"></button>
-                  <div class="progress"></div>
+                  <input type="range" min="0" max="100" value="50" class="progress"></input>
               </div>
             </div>
             <li><a href="#">Song 2</a></li>
