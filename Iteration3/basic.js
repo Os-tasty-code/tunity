@@ -14,8 +14,10 @@ document.addEventListener("DOMContentLoaded", () => {
     //     dur = song.duration
     // }
     setInterval(() => {
-        w += (dur/100);
-        prog.value = w;
+        if(!song.paused) {
+            w += (dur/100);
+            prog.value = w;
+        }
         if(w > 100 && list.children.length > 1) { /*progress bar restarts and moves next song up*/
             w = 0;
             s++;

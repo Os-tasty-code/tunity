@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tunity</title>
+        <link rel="stylesheet" href="queue.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
+        <script src="schedule.js"></script>
+    </head>
+    <body>
+        <div class="topnav">
+            <a class="navbar-brand" href="#">
+                <img src="../logo.png" class="logo-image" href="#profile" width="50vh" height="50vh">
+              <a class="logo-name" href="#tunity">Tunity</a>
+            </a>
+            <div class="topnav-right">
+              <a class = "img-navbar" href="#settings">
+                <img src="../settings-gear.png" width="40" height="40" style="padding-top:0.75vh">
+              </a>
+              <a class="active" href="home.html" style="padding-top: 1.25vh;">Home</a>
+              <a class="img-navbar" href="#profile">
+                <img src="../user-profile-pic.png" width="45" height="45" style="padding-top:0.5vh">
+              </a>
+              <a href="index.html" style="padding-top: 1.25vh;">Log Out</a>
+            </div>
+          </div>
+    
+          
+          
+        <div id="playlist">
+          <ol>
+            <div id="current">
+              <li>
+                <button id="toggle-song" onclick="toggle()"></button>
+                <a href="#">Song 1</a>
+              </li>
+              <div class="bar-background">
+                  <audio id="song-audio" type="audio/mpeg"></audio>
+                  <input type="range" min="0" max="100" value="50" class="progress"></input>
+              </div>
+            </div>
+            <li><a href="#">Song 2</a></li>
+            <li><a href="#">Song 3</a></li>
+            <li><a href="#">Song 4</a></li>
+            <li><a href="#">Song 5</a></li>
+            <li><a href="#">Song 6</a></li>
+            <li><a href="#">Song 7</a></li>
+            <li><a href="#">Recommend Songs!</a></li>
+          </ol>
+        </div>
+        <div class="content">
+            <div class="queue">
+                <div id="current" style="flex-direction:column;">
+                    <h4>Queue</h4>
+                    <p>Songs in Queue: 3</p>
+                </div>
+                <div id="song" style="color: #767676; -webkit-appearance: none;padding: 8px 8px 8px 10px;
+                font-size: 15px;">
+                    <p><a href="#" style="text-decoration:none;color: white;">Song 11</a> submitted by <a href="#" style="text-decoration:none;color: white;">User 1</a></p>
+                    <button onclick='alert("Song 11 has been accepted")' style="background-color: #afffa1;">✓</button>
+                    <button onclick='alert("Song 11 has been rejected")' style="background-color: #e66363;">✗</button>
+                </div>
+                <div id="song" style="color: #767676; -webkit-appearance: none;padding: 8px 8px 8px 10px;
+                font-size: 15px;">
+                    <p><a href="#" style="text-decoration:none;color: white;">Song 12</a> submitted by <a href="#" style="text-decoration:none;color: white;">User 2</a></p>
+                    <button onclick='alert("Song 12 has been accepted")' style="background-color: #afffa1;">✓</button>
+                    <button onclick='alert("Song 12 has been rejected")' style="background-color: #e66363;">✗</button>
+                </div>
+                <div id="song" style="color: #767676; -webkit-appearance: none;padding: 8px 8px 8px 10px;
+                font-size: 15px;">
+                    <p><a href="#" style="text-decoration:none;color: white;">Song 13</a> submitted by <a href="#" style="text-decoration:none;color: white;">User 3</a></p>
+                    <button onclick='alert("Song 13 has been accepted")' style="background-color: #afffa1;">✓</button>
+                    <button onclick='alert("Song 13 has been rejected")' style="background-color: #e66363;">✗</button>
+                </div>
+            </div>  
+        </div>
+    </body>
+</html>
