@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
             list = document.getElementById("playlist").children[0];
             list.removeChild(list.children[1]);
 
-            song.src = "songs/Song-" + s + ".mp3"
+            song.src = "../songs/Song-" + s + ".mp3"
             dur = song.duration;
         }
         if(list.children.length == 1) {
@@ -46,7 +46,7 @@ function toggle() {
     let song = document.getElementById("song-audio");
     setInterval(() => {
         if(isNaN(song.duration)) {
-            console.log("invalid duration)")
+            console.log("invalid duration")
         } else {
             return;
         }
