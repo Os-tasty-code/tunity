@@ -11,6 +11,36 @@ app.use(express.static('public'))
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, '/index.html'));
 })
+
+/*pathing for image folder*/
+app.get('/images/:filename', function(req, res) {
+    res.sendFile("/images/" + req.params.filename, options, (err) => {
+        if (err) {
+            console.log(err);
+            res.status(404).send("File Not Found");
+        }
+    });
+})
+
+/*pathing for song folder*/
+app.get('/songs/:filename', function(req, res) {
+    res.sendFile("/songs/" + req.params.filename, options, (err) => {
+        if (err) {
+            console.log(err);
+            res.status(404).send("File Not Found");
+        }
+    });
+})
+
+app.get('/scripts/:filename', function(req, res) {
+    res.sendFile("/scripts/" + req.params.filename, options, (err) => {
+        if (err) {
+            console.log(err);
+            res.status(404).send("File Not Found");
+        }
+    });
+})
+
 // app.get("/:filename", (req, resp) => {
 //     resp.sendFile(req.params.filename, options, (err) => {
 // 	if (err) {

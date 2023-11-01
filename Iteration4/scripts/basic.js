@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let w = 0;
     let s = 1;
     let dur = 100;
+
     setInterval(() => {
         if(!song.paused) {
             w += (dur/100) * 0.1;
@@ -33,12 +34,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }, 100)
 });
-
-function loadMusic() {
-    let song = document.getElementById("song-audio")
-    song.src = "Song-1.mp3";
-    toggle();
-}
 
 /*onclick function for play button*/
 function toggle() {

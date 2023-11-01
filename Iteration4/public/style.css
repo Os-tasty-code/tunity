@@ -23,7 +23,7 @@ body {
       text-decoration: inherit;
       font-size: 16px;
     }
-    
+
     
     /* Change the color of links on hover */
     .topnav a:hover {
@@ -83,6 +83,16 @@ body {
     font-size: 15px;
     color: #767676;
     display: block;
+    transition: 0.3s;
+    text-decoration: inherit;
+  }
+
+  #playlist li {
+    padding: 8px 8px 8px 10px;
+    font-size: 15px;
+    color: #767676;
+    display: block;
+    text-align: center;
     transition: 0.3s;
     text-decoration: inherit;
   }
