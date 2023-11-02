@@ -20,6 +20,7 @@ app.use(express.static('public'))
 app.get('/', (req, res) => {
     res.render('index', {
       djName: 'DJ Ella',
+      djImageSrc: '/images/dj-profile-pic.jpg',
       albumName: "Marvin Gaye - What's Going On",
       albumImageSrc: '/images/alblum-art.jpg'
     });
