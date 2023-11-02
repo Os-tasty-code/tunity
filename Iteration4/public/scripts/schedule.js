@@ -69,6 +69,18 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
+function showCancelDialog(button) {
+    button.parentElement.querySelector(".cancel-dialog").showModal();
+  }
+
+  function closeCancelDialog(button) {
+    button.parentElement.closest(".cancel-dialog").close();
+  }
+
+  function cancelRequest(button) {
+    button.parentElement.closest(".cancel-dialog").close();
+  }
+
 function submitDJ() {
     var dj = document.getElementById("djcode").value;
     console.log("dj: " + dj);
