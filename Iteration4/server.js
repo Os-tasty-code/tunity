@@ -15,7 +15,8 @@ app.use(express.static('public'))
 
 //With express, you define handlers for routes.
 app.get('/', (req, res) => {
-    res.render('index'); // This will render views/index.ejs
+    const userProfilePic = "/images/user-profile-pic.png";
+    res.render('home', {userProfilePic}); // This will render views/index.ejs
 });
 
 app.get('/schedule', (req, res) => {
@@ -23,6 +24,10 @@ app.get('/schedule', (req, res) => {
     res.render('schedule', { userProfilePic });
 });
 
+app.get('/queue', (req, res) => {
+    const userProfilePic = "/images/user-profile-pic.png";
+    res.render('queue', {userProfilePic}); // This will render views/index.ejs
+});
 
 /*pathing for image folder*/
 app.get('/images/:filename', function(req, res) {
