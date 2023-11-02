@@ -1,11 +1,6 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Tunity</title>
-        <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
-        <script src="/scripts/basic.js"></script>
-    </head>
+    <%- include('partials/head') %>
     <body>
       <%- include('partials/navbar-no-login') %>
       <%- include('partials/playlist', {song: [{name: "Song1"}, {name: "Song2"}]}) %>

@@ -1,12 +1,6 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Tunity</title>
-        <link rel="stylesheet" href="/style.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
-        <script src="scripts/basic.js"></script>
-        <script src="scripts/listener.js" defer></script>
-    </head>
+    <%- include('partials/head', { title: 'Tunity - Listener Homepage', scripts: ['listener'] }) %>
     <body>
         <%- include('partials/navbar', {userProfilePic: userProfilePic}) %>
         <%- include('partials/playlist', {song: [{name: "Song1"}, {name: "Song2"}]}) %>
