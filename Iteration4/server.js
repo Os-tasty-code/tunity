@@ -18,6 +18,11 @@ app.get('/', (req, res) => {
     res.render('index'); // This will render views/index.ejs
 });
 
+app.get('/schedule', (req, res) => {
+    const userProfilePic = "/images/user-profile-pic.png";
+    res.render('schedule', { userProfilePic });
+});
+
 
 /*pathing for image folder*/
 app.get('/images/:filename', function(req, res) {
