@@ -1,0 +1,30 @@
+<div class="request-container">
+    <form onsubmit="changeColor(this)">
+        <legend>Suggest a song</legend>
+        <input type="text" name="songRequest" id="songRequestInput" placeholder="Enter a song to request here" required>
+        <input type="button" value="Submit" id="submitButton" onclick="changeColor(this)">
+    </form>
+    <ol id="requests-list">
+        <% for (let i = 0; i < songs.length; i++) { %>
+            <li class="list-item">
+                <span class="list-item-text"><%= songs[i] %> - <%= statuses[i] %></span>
+                
+                <% if (statuses[i] === 'APPROVED') { %>
+                    <div class="list-item-approved"></div>
+                <% } else if (statuses[i] === 'REJECTED') { %>
+                    <div class="list-item-reject"></div>
+                <% } else if (statuses[i] === 'PENDING') { %>
+                    <button class="cancel-button" onclick="showCancelDialog(this)">Cancel</button>
+                    <dialog id="cancelDialog" class="cancel-dialog">
+                        Are you sure you want to cancel this request?
+                        <br>
+                        <button class="cancel-button" style="background-color:#3500d3" id="cancelNoButton">No</button>
+                        <button class="cancel-button" style="background-color:#3500d3" id="cancelYesButton">Yes</button>
+                    </dialog>
+                    <div class="list-item-pending"></div>
+                <% } %>
+
+            </li>
+        <% } %>
+    </ol>
+</div>

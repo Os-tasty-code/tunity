@@ -1,66 +1,12 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Tunity</title>
-        <link rel="stylesheet" href="/style.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
-        <script src="scripts/basic.js"></script>
-        <script src="listener.js" defer></script>
-    </head>
+    <%- include('partials/head', { title: 'Tunity - Listener Homepage', scripts: ['listener'] }) %>
     <body>
         <%- include('partials/navbar', {userProfilePic: userProfilePic}) %>
         <%- include('partials/playlist', {song: [{name: "Song1"}, {name: "Song2"}]}) %>
         <div class="content">
-          <div class="left-container">
-            <div class="dj-container">
-              <figure>
-                <img class="dj-art" style="padding-left: 40px;" src="../images/dj-profile-pic.jpg"  width="300" height="300"/>
-                <figcaption> DJ Ella </figcaption>
-              </figure>
-              <div class="content-button">
-                <a href="#djs-schedule" style="color: white;"> See DJs and Schedule </a>
-              </div>
-            </div>
-            <div class="artist-container">
-              <figure>
-                <img class="alblum-art" style="padding-left: 40px;" src="../images/alblum-art.jpg" width="300" height="300"/>
-                <figcaption> Marvin Gaye - What's Going On</figcaption>
-              </figure>
-            </div>
-          </div>
-
-
-          <div class="request-container">
-            <form onsubmit="changeColor(this)">
-              <legend>Suggest a song</legend>
-              <input type="text" name="songRequest" id="songRequestInput" placeholder="Enter a song to request here" required>
-              <input type="button" value="Submit" id="submitButton" onclick="changeColor(this)">
-            </form>
-            <ol id="requests-list">
-              <li class="list-item">
-                  <span class="list-item-text">My Girl - The Temptations - APPROVED</span>
-                  <div class="list-item-approved"></div>
-              </li>
-              <li class="list-item">
-                  <span class="list-item-text">The Wheels on the bus - REJECTED</span>
-                  <div class="list-item-reject"></div>
-              </li>
-              <li class="list-item">
-                  <span class="list-item-text">Baby Love - The Supremes - PENDING</span>
-                  <button class="cancel-button" onclick="showCancelDialog(this)">Cancel</button>
-                  <dialog id="cancelDialog" class="cancel-dialog">
-                    Are you sure you want to cancel this request?
-                    <br>
-                    <button class="cancel-button" style="background-color:#3500d3" id="cancelNoButton">No</button>
-                    <button class="cancel-button" style="background-color:#3500d3" id="cancelYesButton">Yes</button>
-                </dialog>
-                  <div class="list-item-pending"></div>
-                  
-              </li>
-          </ol>
-          </div>
+            <%- include('partials/left-container') %>
+            <%- include('partials/request-container') %>
         </div>
-        
-
     </body>
 </html>
