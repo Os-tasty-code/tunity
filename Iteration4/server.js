@@ -24,6 +24,11 @@ app.get('/schedule', (req, res) => {
     res.render('schedule', { userProfilePic });
 });
 
+app.get('/playlist', (req, res) => {
+    const userProfilePic = "/images/user-profile-pic.png";
+    res.render('producer-playlist', { userProfilePic });
+});
+
 app.get('/queue', (req, res) => {
     const userProfilePic = "/images/user-profile-pic.png";
     res.render('queue', {userProfilePic}); // This will render views/index.ejs

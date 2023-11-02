@@ -23,48 +23,23 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }, 1)
 
-    const elements = [
-        { buttonText: 'A' },
-        { buttonText: 'A' },
-        { buttonText: 'B' },
-        { buttonText: 'A' },
-        { buttonText: 'B' },
-        { buttonText: 'D' },
-        { buttonText: 'D' },
-        { buttonText: 'A' },
-        { buttonText: 'A' },
-        { buttonText: 'C' },
-        { buttonText: 'NONE' },
-        { buttonText: 'B' },
-        { buttonText: 'A' },
-        { buttonText: 'B' },
-        { buttonText: 'A' },
-        { buttonText: 'C' },
-        { buttonText: 'C' },
-        { buttonText: 'D' },
-        { buttonText: 'D' },
-        { buttonText: 'A' },
-        { buttonText: 'D' },
-        { buttonText: 'C' },
-        { buttonText: 'C' },
-        { buttonText: 'NONE' },
-        { buttonText: 'A' },
-        { buttonText: 'C' },
-        { buttonText: 'NONE' },
-        { buttonText: 'B' }
-    ];
+    const buttons = [
+        { buttonText: 'Add' },
+        { buttonText: 'Add' },
+        { buttonText: 'Add' },
+    ]
     // Get parent div in which you want to add buttons
     const parent = document.getElementById("grid-container");
     
     // In for loop, set "i" to be lower than number length of array.
-    for(let i = 0; i < elements.length; i++) {
+    for(let i = 0; i < buttons.length; i++) {
         // Create button node and add innerHTML (innerHTML is stuff that goes between <></> tags).
         // Since "elements" is an array, you select current iteration of it with [i]
         let button = document.createElement("button");
-        button.classList.add("grid-item-" + elements[i].buttonText.toLowerCase());
-        button.innerHTML = elements[i].buttonText;
+        button.classList.add("grid-item-button");
+        button.innerHTML = buttons[i].buttonText;
         console.log("button text: " + button.innerHTML);
-        button.onclick = openForm;
+        button.onclick = addSong;
         parent.appendChild(button);
     }
 });
@@ -81,23 +56,6 @@ function showCancelDialog(button) {
     button.parentElement.closest(".cancel-dialog").close();
   }
 
-function submitDJ() {
-    var dj = document.getElementById("djcode").value;
-    console.log("dj: " + dj);
-    if(dj == "") {
-        alert("You must input a DJ code!");
-        return false;
-    }
-    else {
-        alert("Form submitted!");
-        return true;
-    }
-}
-
-function openForm() {
-    document.getElementById("changeDJ").style.display = "block";
-}
-  
-function closeForm() {
-    document.getElementById("changeDJ").style.display = "none";
+function addSong() {
+    alert('Song added to playlist!');
 }

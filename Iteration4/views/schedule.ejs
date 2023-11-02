@@ -5,23 +5,10 @@
         <link rel="stylesheet" href="/schedule.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
 
-        <script>
-          function showCancelDialog(button) {
-            button.parentElement.querySelector(".cancel-dialog").showModal();
-          }
-
-          function closeCancelDialog(button) {
-            button.parentElement.closest(".cancel-dialog").close();
-          }
-
-          function cancelRequest(button) {
-            button.parentElement.closest(".cancel-dialog").close();
-          }
-        </script>
-        <script src="/schedule.js"></script>
+        <script src="/scripts/schedule.js"></script>
     </head>
     <body>
-        <%- include('partials/navbar', {userProfilePic: userProfilePic}) %>
+        <%- include('partials/producer-navbar') %>
           
         <div id="playlist">
           <ol>
