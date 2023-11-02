@@ -1,9 +1,9 @@
 # Tunity
 
 ## installed packages
-ejs
-express
-node
+* ejs
+* express
+* node
 
 ## command to run
 ``` 
