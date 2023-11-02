@@ -1,16 +1,23 @@
 const path = require("path");
 const express = require("express");
+const home = require('./routes/home');
 const app = express();
 const options = {
     root: path.join(__dirname, "/")
 };
+
+//Tell node to use ejs.
+app.set('view engine', 'ejs');
 //uses style sheets inside public
 app.use(express.static('public'))
 
-// With express, you define handlers for routes.
-app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname, '/index.html'));
-})
+
+
+//With express, you define handlers for routes.
+app.get('/', (req, res) => {
+    res.render('index'); // This will render views/index.ejs
+});
+
 
 /*pathing for image folder*/
 app.get('/images/:filename', function(req, res) {
@@ -32,6 +39,11 @@ app.get('/songs/:filename', function(req, res) {
     });
 })
 
+app.get('/login', (req, res) => {
+    res.render('login');
+});
+
+
 app.get('/scripts/:filename', function(req, res) {
     res.sendFile("/scripts/" + req.params.filename, options, (err) => {
         if (err) {
@@ -40,6 +52,7 @@ app.get('/scripts/:filename', function(req, res) {
         }
     });
 })
+
 
 // app.get("/:filename", (req, resp) => {
 //     resp.sendFile(req.params.filename, options, (err) => {
@@ -52,6 +65,9 @@ app.get('/scripts/:filename', function(req, res) {
 // 	}
 //     });
 // });
+
+app.use(home);
+
 
 app.listen(8080, () => {
     console.log("Tunity webpage on port 8080");

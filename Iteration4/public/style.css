@@ -199,3 +199,252 @@ body {
     transition: 0.3s;
     text-decoration: inherit;
     }
+
+
+
+
+    /* ----- Begin login/registration pages ------ */
+.login-window {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url('./images/menu.png'); 
+  background-size: contain; /* Scale the image to fit within the box */
+  background-repeat: no-repeat;
+  background-position: center center; 
+  width: 1000px; /*Affects size of png*/
+  height: 1000px; 
+  text-align: center;
+}
+
+.login-window form {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-window legend {
+  font-size: 52px; 
+  color: white; 
+  font-family: "Trirong", serif;
+  text-decoration: none;
+}
+
+.login-window label {
+  font-size: 18px;
+  color: white;
+  display: block;
+}
+
+.login-window input[type="text"] {
+  margin: 0px;
+}
+
+.login-window input[type="submit"] {
+  background-color: #282828;
+  color: white;
+  padding: 10px 20px;
+  font-size: 18px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+/* ----- End login/registration pages ----- */
+/* ----- Begin listener homepage ----- */
+/* #351e7b pruple
+#190061 darkblue
+#767676 light gray playlsit text?
+#282828 dark gray playlist
+#3500d3 light blue
+
+
+*/
+.request-container legend {
+  font-size: 32px;
+  color: white;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.request-container .input-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.request-container input[type="text"] {
+  font-size: 24px;
+  color: black;
+  padding: 10px;
+  margin: 10px 0;
+  width: 97.5%; 
+}
+
+.request-container input[type="button"] {
+  font-size: 24px;
+  color: white;
+  background-color: #3500d3;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  width: 100%; 
+}
+
+.request-container ol {
+  font-size: 24px;
+  padding-left: 20px;
+  list-style-type: none;
+}
+
+.request-container li {
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #190061;
+  border-radius: 10px;
+  color: #fff; 
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.list-item-text {
+  flex-grow: 1;
+}
+
+.list-item-approved,
+.list-item-pending,
+.list-item-reject {
+  background-size: cover; 
+  width: 30px;
+  height: 30px; 
+  margin-left: 10px; 
+}
+
+.list-item-reject {
+  background-image: url('./images/request-reject.svg');
+}
+
+.list-item-approved{
+  background-image: url('./images/request-approved.png');
+}
+
+.list-item-pending{
+  background-image: url('./images/request-pending.png'); 
+}
+
+.cancel-button {
+  background-color: #3500d3;
+  color: white;
+  padding: 5px 10px;
+  font-size: 24px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.cancel-dialog {
+  border: 2px solid #282828;
+  border-radius: 5px;
+  padding: 10px;
+  text-decoration: inherit;
+  background-color: #767676;
+  font-size: 24px;
+  color: #282828;
+
+}
+
+
+/* ----- End listener homepage ----- */
+/* ----- Begin default homepage ----- */
+.left-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.dj-container,
+.artist-container,
+.request-container {
+  flex: 1;
+  margin: 5px; 
+  border-radius: 10px; 
+  padding: 10px; 
+  background-color: #282828; 
+  display: flex;
+  flex-direction: column;
+}
+
+
+.dj-container h1,
+.artist-container h1,
+.request-container h1{
+  padding-left: 20px;
+  size: 32px;
+  color: #3500d3;
+  position: relative;
+}
+
+.content-button {
+  background-color: #3500d3;
+  color: white;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.content figure {
+  display: flex;
+  flex-direction: column;
+}
+
+.content figcaption {
+  order: -1;
+  padding-left: 20px;
+  font-size: 32px; 
+  color: white;
+  position: relative;
+}
+
+/*Place image below text*/
+.content img {
+  order: 1; 
+}
+
+.warning-icon {
+  background-size: cover; 
+  width: 100px;
+  height: 100px; 
+  background-image: url('./images/warning.png');
+  margin: auto;
+}
+.warning-text {
+  background-color: #767676;
+  padding: 20px; 
+  border-radius: 10px; 
+  text-align: center; 
+  font-size: 32px;
+  margin: auto;
+  width: 80%;
+  height: 80%;
+}
+
+.warning-text a {
+  display: inline-block;
+  background-color: #3500d3;
+  padding: 10px;
+  border-radius: 10px; 
+  margin: 5px; 
+  text-decoration: none; 
+  color: #e3f2fd; 
+}
+/* ----- End default homepage ----- */

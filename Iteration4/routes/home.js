@@ -1,0 +1,9 @@
+const express = require('express');
+const router = express.Router();
+
+router.get('/home', (req, res) => {
+    const userProfilePic = "/images/user-profile-pic.png";
+    res.render('home', { userProfilePic });
+});
+
+module.exports = router;

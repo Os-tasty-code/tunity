@@ -2,18 +2,18 @@
 <html>
     <head>
         <title>Tunity</title>
-        <link rel="stylesheet" href="../style.css">
+        <link rel="stylesheet" href="/style.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
-
-        <script src="../basic.js"></script>
+        <script src="/basic.js"></script>
         <script src="listener.js" defer></script>
-
     </head>
     <body>
-      <%- include('partials/navbar') %>
+        <%- include('partials/navbar', {userProfilePic: userProfilePic}) %>
 
-          
-          
+
+
+
+
         <div id="playlist">
           <ol>
             <div id="current">
