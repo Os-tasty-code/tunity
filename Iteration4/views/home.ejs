@@ -4,29 +4,12 @@
         <title>Tunity</title>
         <link rel="stylesheet" href="/style.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
-        <script src="/basic.js"></script>
+        <script src="scripts/basic.js"></script>
         <script src="listener.js" defer></script>
     </head>
     <body>
         <%- include('partials/navbar', {userProfilePic: userProfilePic}) %>
         <%- include('partials/playlist', {song: [{name: "Song1"}, {name: "Song2"}]}) %>
-        <!-- <div id="playlist">
-          <ol>
-            <div id="current">
-              <li><a href="#">Song 1</a></li>
-              <div class="bar-background">
-                  <div class="progress"></div>
-              </div>
-            </div>
-            <li><a href="#">Song 2</a></li>
-            <li><a href="#">Song 3</a></li>
-            <li><a href="#">Song 4</a></li>
-            <li><a href="#">Song 5</a></li>
-            <li><a href="#">Song 6</a></li>
-            <li><a href="#">Song 7</a></li>
-            <li><a href="#">Recommend Songs!</a></li>
-          </ol>
-        </div> -->
         <div class="content">
           <div class="left-container">
             <div class="dj-container">

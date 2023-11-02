@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if(w > 100 && list.children.length > 1) { /*progress bar restarts and moves next song up*/
             w = 0;
             s++;
-            document.getElementById("current").children[0].children[1].innerHTML = "Song " + s;
+            document.getElementById("current").children[0].children[1].innerHTML = "Song2";
             list = document.getElementById("playlist").children[0];
             list.removeChild(list.children[1]);
 
@@ -46,11 +46,15 @@ function toggle() {
             return;
         }
     }, 100)
-    if(song.paused) {
-        button.innerHTML = "||";
-        song.play();
-    } else {
-        button.innerHTML = "▶";
-        song.pause();
+    try{
+        if(song.paused) {
+            button.innerHTML = "||";
+            song.play();
+        } else {
+            button.innerHTML = "▶";
+            song.pause();
+        }
+    } catch (e) {
+        console.log(e.message);
     }
 }
