@@ -9,7 +9,8 @@
     </head>
     <body>
         <%- include('partials/navbar', {userProfilePic: userProfilePic}) %>
-        <div id="playlist">
+        <%- include('partials/playlist', {song: [{name: "Song1"}, {name: "Song2"}]}) %>
+        <!-- <div id="playlist">
           <ol>
             <div id="current">
               <li><a href="#">Song 1</a></li>
@@ -25,7 +26,7 @@
             <li><a href="#">Song 7</a></li>
             <li><a href="#">Recommend Songs!</a></li>
           </ol>
-        </div>
+        </div> -->
         <div class="content">
           <div class="left-container">
             <div class="dj-container">
