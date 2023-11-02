@@ -2,6 +2,7 @@ const path = require("path");
 const express = require("express");
 const home = require('./routes/home');
 const app = express();
+
 const options = {
     root: path.join(__dirname, "/")
 };
@@ -52,19 +53,6 @@ app.get('/scripts/:filename', function(req, res) {
         }
     });
 })
-
-
-// app.get("/:filename", (req, resp) => {
-//     resp.sendFile(req.params.filename, options, (err) => {
-// 	if (err) {
-// 	    console.log(err);
-// 	    resp.status(404).send("File Not Found");
-// 	}
-// 	else {
-// 	    console.log("Sent:", req.params.filename);
-// 	}
-//     });
-// });
 
 app.use(home);
 
