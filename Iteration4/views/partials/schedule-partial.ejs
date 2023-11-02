@@ -1,0 +1,35 @@
+<!--
+    copy and paste html into this file
+    move css into the public folder / add to the style.css
+    make sure that pathing to css works
+    look into using the partial as a function to accept parameters (for DJ to get slot, for Producer to make times)
+        for reference, look at navbar.ejs and home.ejs
+-->
+
+<div class="grid-header">
+    <h2>Master Schedule</h2>
+</div>
+<div id="grid-container" class="grid-container">
+    <div class="grid-item-header">Sun</div>
+    <div class="grid-item-header">Mon</div>
+    <div class="grid-item-header">Tue</div>  
+    <div class="grid-item-header">Wed</div>
+    <div class="grid-item-header">Thu</div>
+    <div class="grid-item-header">Fri</div>  
+    <div class="grid-item-header">Sat</div>
+</div>
+
+<div name="form-popup" class="form-popup" id="changeDJ">
+    <form class="form-container" onsubmit="submitDJ();return false">
+      <h1>Change DJ</h1>
+
+      New DJ: <input id="djcode" type="text" name="dj">
+      <input type="submit" value="Submit">
+  
+      <!--<label for="dj"><b>New DJ</b></label>
+      <input type="text" placeholder="Enter DJ Code" name="dj">
+  
+      <button id="submitdj" type="submit" class="btn" onclick="alert('Button was clicked!')">Submit</button>-->
+      <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+    </form>
+</div>
