@@ -2,7 +2,6 @@ const path = require("path");
 const express = require("express");
 const home = require('./routes/home');
 const app = express();
-
 const options = {
     root: path.join(__dirname, "/")
 };
