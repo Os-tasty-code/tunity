@@ -23,6 +23,11 @@ app.get('/schedule', (req, res) => {
     res.render('schedule', { userProfilePic });
 });
 
+app.get('/playlist', (req, res) => {
+    const userProfilePic = "/images/user-profile-pic.png";
+    res.render('producer-playlist', { userProfilePic });
+});
+
 
 /*pathing for image folder*/
 app.get('/images/:filename', function(req, res) {
