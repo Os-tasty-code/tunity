@@ -1,6 +1,9 @@
 const path = require("path");
 const express = require("express");
 const home = require('./routes/home');
+const signup = require('./routes/signup');
+const login = require('./routes/login');
+
 const app = express();
 const options = {
     root: path.join(__dirname, "/")
@@ -15,9 +18,13 @@ app.use(express.static('public'))
 
 //With express, you define handlers for routes.
 app.get('/', (req, res) => {
-    const userProfilePic = "/images/user-profile-pic.png";
-    res.render('home', {userProfilePic}); // This will render views/index.ejs
+    res.render('index', {
+      djName: 'DJ Ella',
+      albumName: "Marvin Gaye - What's Going On",
+      albumImageSrc: '/images/alblum-art.jpg'
+    });
 });
+  
 
 app.get('/schedule', (req, res) => {
     const userProfilePic = "/images/user-profile-pic.png";
@@ -54,10 +61,6 @@ app.get('/songs/:filename', function(req, res) {
     });
 })
 
-app.get('/login', (req, res) => {
-    res.render('login');
-});
-
 
 app.get('/scripts/:filename', function(req, res) {
     res.sendFile("/scripts/" + req.params.filename, options, (err) => {
@@ -69,6 +72,8 @@ app.get('/scripts/:filename', function(req, res) {
 })
 
 app.use(home);
+app.use(signup);
+app.use(login);
 
 
 app.listen(8080, () => {

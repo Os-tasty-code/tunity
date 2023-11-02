@@ -7,83 +7,22 @@
         <script src="/scripts/basic.js"></script>
     </head>
     <body>
-      <div class="topnav">
-        <a class="navbar-brand" href="#">
-            <div class="logo-image">
-                  <img src="/images/logo.png" width="45" height="45">
-            </div>
-            <a class="logo-name" href="/">Tunity</a>
-        </a>
-        <div class="topnav-right">
-            <a class="active" href="index.html">Home</a>
-            <a href="signup.html">Sign Up</a>
-            <a href="/login">Log In</a>
-        </div>
-    </div>
-    
-        <div id="playlist">
-          <ol>
-            <div id="current">
-              <li>
-                <button id="toggle-song" onclick="toggle()"></button>
-                <a href="#">Song 1</a>
-              </li>
-              <div class="bar-background">
-                  <audio id="song-audio" type="audio/mpeg"></audio>
-                  <input type="range" min="0" max="100" value="0" class="progress"></input>
-              </div>
-            </div>
-            <li onmousedown="console.log('working')">Song 2</li>
-            <li>Song 3</li>
-            <li>Song 4</li>
-            <li>Song 5</li>
-            <li>Song 6</li>
-            <li>Song 7</li>
-            <li>Recommend Songs!</li>
-          </ol>
-
-          <div id="song-popup">
-            
-            <!-- <form class="form-container" onsubmit="submitDJ();return false">
-              <h1>Change DJ</h1>
-
-              New DJ: <input id="djcode" type="text" name="dj">
-              <input type="submit" value="Submit">
-              <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-            </form> -->
-          </div>
-        </div>
-        <div class="content">
- 
-
-          <div class="left-container">
-            <div class="dj-container">
-              <figure>
-                <img class="dj-art" style="padding-left: 40px;" src="/images/dj-profile-pic.jpg"  width="300" height="300"/>
-                <figcaption> DJ Ella </figcaption>
-              </figure>
-              <div class="content-button">
-                <a href="#djs-schedule" style="color: white;"> See DJs and Schedule </a>
-              </div>
-            </div>
-            <div class="artist-container">
-              <figure>
-                <img class="alblum-art" style="padding-left: 40px;" src="/images/alblum-art.jpg" width="300" height="300"/>
-                <figcaption> Marvin Gaye - What's Going On</figcaption>
-              </figure>
-            </div>
-          </div>
-
-          <div class="request-container">
-            <div class="warning-icon"></div>
-            <div class="warning-text">
-                <p> You must be logged in to make suggestions to the DJ</p> 
-               <p> Already have an account? </p>
-                <a href="login">Click here to login</a>
-                <p> Need an account? </p>
-                <a href="signup">Click here to join Tunity and DJ Ella's show today!</a>
-            </div>
-        </div>
+      <%- include('partials/navbar-no-login') %>
+      <%- include('partials/playlist', {song: [{name: "Song1"}, {name: "Song2"}]}) %>
         
+      <div class="content">
+        <%- include('partials/left-container') %>
+        <!-- Log in messages only used here, so partials not useful -->
+        <div class="request-container">
+          <div class="warning-icon"></div>
+          <div class="warning-text">
+            <p> You must be logged in to make suggestions to the DJ</p> 
+            <p> Already have an account? </p>
+            <a href="login">Click here to login</a>
+            <p> Need an account? </p>
+            <a href="signup">Click here to join Tunity and DJ Ella's show today!</a>
+          </div>
+        </div>
+      </div>
     </body>
 </html>
