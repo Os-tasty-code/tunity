@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tunity</title>
+        <link rel="stylesheet" href="/style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
+        <script src="scripts/basic.js"></script>
+        <script src="scripts/queue.js"></script>
+        <script src="listener.js" defer></script>
+    </head>
+    <body>
+        <%- include('partials/navbar', {userProfilePic: userProfilePic}) %>
+        <%- include('partials/playlist', {song: [{name: "Song1"}, {name: "Song2"}]}) %>
+        <div class="content">
+            <div class="queue">
+                <% let queue = [{name: "Song3", user: "User1"}, {name: "Song4", user: "User2"}] %>
+                <div id="current" style="flex-direction:column;">
+                    <h4>Queue</h4>
+                    <p>Songs in Queue: <%= queue.length %></p>
+                </div>
+                <% for(i=0; i < queue.length; i++) { %>
+                    <div id="song" style="color: #767676; -webkit-appearance: none;padding: 8px 8px 8px 10px; font-size: 15px;">
+                    <p><a href="#" style="text-decoration:none;color: white;"><%=queue[i].name %></a> submitted by <a href="#" style="text-decoration:none;color: white;"><%=queue[i].user%></a></p>
+                    <button onclick="alert('<%= queue[i].name %> accepted!')" style="background-color: #afffa1;">✓</button>
+                    <button onclick="alert('<%= queue[i].name %> rejected!')" style="background-color: #e66363;">✗</button>
+                </div>
+                <%} %>
+            </div>
+
+    </body>
+</html>

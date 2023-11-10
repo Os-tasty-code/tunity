@@ -1,0 +1,191 @@
+body {
+    font-family: "Trirong", serif;
+    text-decoration: none;
+    margin: 0px;
+  }
+  
+  .topnav {
+      background-color: #3500d3;
+      overflow: hidden;
+      font-family: "Trirong", serif;
+      height: 10%;
+      width: 100%;
+      padding-top: 1vh;
+      padding-bottom: 1vh;
+    }
+    
+    /* Style the links inside the navigation bar */
+    .topnav-right a {
+      float: left;
+      color: #bfbfbf;
+      padding-left: 3vw;
+      padding-right: 3vw;
+      text-decoration: inherit;
+      font-size: 16px;
+    }
+    
+    
+    /* Change the color of links on hover */
+    .topnav a:hover {
+      color: #f1f1f1;
+    }
+    
+    /* Add a color to the active/current link */
+    .topnav a.active {
+      /*background-color: #d86ac2;*/
+      color: #f1f1f1;
+    }
+  
+    /* Right-aligned section inside the top navigation */
+  .topnav-right {
+    float: right;
+  }
+  
+  .img-navbar {
+    height: 8vh;
+    width: 8wh;
+  }
+  
+  .logo-image {
+    float: left;
+    text-align: center;
+    padding-left: 3vw;
+    padding-right: 3vw;
+    display: inline-block;
+  }
+  
+  .logo-name {
+      float: left;
+      color: #ffffff;
+      text-align: center;
+      padding-left: 5px;
+      padding-right: 3vw;
+      text-decoration: none;
+      font-size: 25px;
+  }
+  
+  /*----------------------------------------*/
+  
+  #playlist {  
+    height: 90%; 
+    width: 20%;
+    background-color: #282828; 
+    text-decoration: inherit;
+    left: 0;
+    display: block;
+    flex-direction: column;
+    position: absolute;
+    top: 10;
+  }
+  
+  #playlist a {
+    padding: 8px 8px 8px 10px;
+    font-size: 15px;
+    color: #767676;
+    display: block;
+    transition: 0.3s;
+    text-decoration: inherit;
+  }
+  
+  #playlist ol {
+    list-style: none!important;
+    padding: 0px 0px 0px 0px;
+    margin: 0;
+  }
+  
+  #current {
+    background: #190061;
+    display: block;
+  }
+  
+  #current a {
+    color: white;
+  }
+  
+  .bar-background{
+      background-color: #351e7b;
+      height: 3vh;
+      border: 8px 8px 8px 8px;
+  }
+  
+  .progress {
+    -webkit-appearance: none;
+    color: #3500d3;
+    fill: #ffffff!important;
+    height: 100%;
+    width: 100%;
+    padding: 0px;
+    display: block;
+    margin: 0;
+  }
+  
+  .progress::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 1px;
+    height: 3vh;
+    background: #3500d3;
+    cursor: pointer;
+  }
+  
+  input[type="range"] {
+    -webkit-appearance: none;
+  
+    @media screen and (-webkit-min-device-pixel-ratio:0) {
+      & {
+        overflow: hidden;
+        -webkit-appearance: none;
+        background-color: #ffffff!important;
+      }
+  
+      &::-webkit-slider-thumb {
+        width: 1px;
+        -webkit-appearance: none;
+        height: 40px;
+        cursor: ew-resize;
+        background: #fff;
+        box-shadow: -340px 0 0 340px #3500d3, inset 0 0 0 40px #3500d3;
+        border-radius: 50%;
+        position: relative;
+      }
+    }
+  }
+  
+  #toggle-song {
+    background: #190061;
+    color: #ffffff;
+    border:none;
+    float: right;
+  }
+  /*----------------------------------------*/
+  
+  .content {
+    display: flex;
+    position: relative;
+    top: 10;
+    left: 20%;
+    height: calc(90vh);
+    width: 80%;
+    background-color: #0c0032!important;
+    overflow: hidden !important;
+  }
+
+.queue {  
+    width: 40%;
+    background-color: #111; /* Black*/
+    text-decoration: inherit;
+    top:0;
+    left: 0;
+    display:flex;
+    flex-direction: column;
+    position: absolute;
+    }
+
+    .song {
+    padding: 8px 8px 8px 10px;
+    font-size: 15px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+    text-decoration: inherit;
+    }
