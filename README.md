@@ -4,6 +4,8 @@
 * ejs
 * express
 * node
+* mongodb
+* mongoose
 
 ## command to run
 ``` 

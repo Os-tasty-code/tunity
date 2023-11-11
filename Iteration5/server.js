@@ -4,10 +4,26 @@ const home = require('./routes/home');
 const signup = require('./routes/signup');
 const login = require('./routes/login');
 
+
+const mongoose = require('./database');
+const { loadTestData, clearDatabase } = require('./databaseFunctions');
+const UserModel = require('./models/User');
+const SongModel = require('./models/Song');
+
+mongoose.connection.once('open', () => {
+    //loads example docs into mongo if database is empty.
+    loadTestData();
+    //For debugging
+    //clearDatabase();
+});
+
+
 const app = express();
 const options = {
     root: path.join(__dirname, "/")
 };
+
+
 
 //Tell node to use ejs.
 app.set('view engine', 'ejs');
