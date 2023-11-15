@@ -1,93 +1,89 @@
 //List itemcancel button
-function showCancelDialog() {
+let currentCancelSongName = null; //Store song being canceled to be passed to dialog.
+function showCancelDialog(button) {
+    let listItem = button.closest('.list-item');
+    currentCancelSongName = listItem.querySelector('.list-item-text').textContent.split(' - ')[0];
+
     const dialog = document.getElementById("cancelDialog");
     dialog.showModal();
 }
 
-//Dialog no button
+
+//Dialog no button 
 function closeCancelDialog() {
     const dialog = document.getElementById("cancelDialog");
         dialog.close();
 }
 document.getElementById("cancelNoButton").addEventListener("click", closeCancelDialog);
 
-//Dialog yes button
-function cancelRequest(button) {
-    closeCancelDialog(button);
-    // This is the list element box
-    let listItem = button.parentElement.parentElement;
-    //Logical Operators (2 points)
-    if (!listItem)
-        return;
-    else {
-        // Get the list
-        var requestsList = listItem.parentElement;
-        // Remove the list item and all its children from the ordered list
-        requestsList.removeChild(listItem);
-    }
-    
+//Dialog yes button - updates db with song and reloads page
+function cancelRequest() {
+    fetch('/remove-song-request', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ songName: currentCancelSongName }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            window.location.reload();
+        } else {
+            alert('Error removing song request');
+        }
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
 }
 
-//Variables (2 points)
+
 let cancelYesButton = document.getElementById("cancelYesButton");
 cancelYesButton.addEventListener("click", function() {
     cancelRequest(this);
 });
 
-// Functions (1 point):
-//On click for the submit button to add a requested song.
+//On click for the submit button to add a requested song - updates db and refreshies page
 function addListItemToRequests(button) {
-
-    // Get the String from the songRequest input field
     var songRequestInput = document.getElementById("songRequestInput");
-    var songRequestValue = songRequestInput.value.trim(); // Remove leading and trailing spaces
-    //Comparison Operators (2 points):
-    //Validating Forms (10 points): 
-    //Window Object (10 points): 
+    var songRequestValue = songRequestInput.value.trim();
+
     if (songRequestValue === "") {
-        alert("Field can not be blank");
+        //TODO: add some double click protection here? Its annoying getting the alert.
+        alert("Field cannot be blank");
         return;
     } else {
-        songRequestInput.value="";
+        songRequestInput.value = "";
+        fetch('/add-song-request', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ songName: songRequestValue }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                window.location.reload(); // Reload the page to reflect changes
+            } else {
+                alert("Error adding song request");
+            }
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
     }
-
-
-    //- Modifying a DOM Element (15 points):
-    //Get whole list
-    var requestsList = document.getElementById("requests-list");
-    // Create a new list item
-    var newItem = document.createElement("li");
-    newItem.className = "list-item";
-    //Add text
-    var listTextDiv = document.createElement("div");
-    listTextDiv.className = "list-item-text";
-    listTextDiv.textContent = songRequestValue + " - PENDING"; // Use the input value
-    newItem.appendChild(listTextDiv);
-    // Add cancel button
-    var cancelButton = document.createElement("button");
-    cancelButton.className = "cancel-button";
-    cancelButton.textContent = "Cancel";
-    cancelButton.addEventListener("click", function () {
-        showCancelDialog(this);
-    });
-    newItem.appendChild(cancelButton);
-    //Add pending image
-    var listPendingDiv = document.createElement("div");
-    listPendingDiv.className = "list-item-pending";
-    newItem.appendChild(listPendingDiv);
-    //Add new item to list
-    requestsList.appendChild(newItem);
-    
-    
 }
+
+//Connect form submit button
 var submitButton = document.getElementById("submitButton");
 submitButton.addEventListener("click", function () {
     addListItemToRequests(submitButton);
 });
 
-
+//Change submit button color on click
 function changeColor(button) {
-    //Button click visual
     button.style.backgroundColor = '#190061';
     setTimeout(function () {
         button.style.backgroundColor = '#3500d3';
@@ -101,8 +97,8 @@ document.onkeydown = function (event) {
     }
 };
 
-//- Loops (1 point):
-//Window Object (10 points): 
+
+//Light up req list on load (such as adding or removing element load)
 function flashList() {
     let requestsList = document.getElementById("requests-list");
     let listItems = requestsList.querySelectorAll("li");
@@ -113,8 +109,8 @@ function flashList() {
             listItem.style.backgroundColor = "#3500d3";
             setTimeout(function () {
                 listItem.style.backgroundColor = "#190061";
-            }, 100); // Change color back after 1 second
-        }, index * 100); // Change color after a delay
+            }, 100); 
+        }, index * 100);
     }
 }
 flashList();

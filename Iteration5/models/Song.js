@@ -1,4 +1,4 @@
-// Song.js
+//Contains the schema for a song
 const mongoose = require('../database');
 const Schema = mongoose.Schema;
 
@@ -8,7 +8,7 @@ const songSchema = new Schema({
     album: String,
     genre: [String],
     audioUrl: { type: String, required: true },
-    albumArtUrl: String,
+    albumArt: String,
     length: Number,
 }, { timestamps: true });
 

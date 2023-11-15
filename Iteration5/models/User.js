@@ -22,7 +22,7 @@ const userSchema = new Schema({
         timeOnSite: { type: Number, default: 0 },
         songRecommendations: [{
             name: { type: String, required: true },
-            status: { type: String, enum: ['pending', 'accepted', 'rejected'], default: 'pending' },
+            status: { type: String, enum: ['PENDING', 'ACCEPTED', 'REJECTED'], default: 'PENDING' },
             message: String
         }]
     },

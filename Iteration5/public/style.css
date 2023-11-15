@@ -75,7 +75,6 @@ body {
     display: block;
     flex-direction: column;
     position: absolute;
-    top: 10;
   }
   
   #playlist a {
@@ -172,7 +171,6 @@ body {
   .content {
     display: flex;
     position: relative;
-    top: 10;
     left: 20%;
     height: calc(90vh);
     width: 80%;

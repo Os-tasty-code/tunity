@@ -1,15 +1,25 @@
 const express = require('express');
 const router = express.Router();
+const { getCurrentSong, getCurrentDJ } = require('../databaseFunctions');
 
-router.get('/home', (req, res) => {
-    res.render('home', { userProfilePic: '/images/user-profile-pic.png',
-        djName: 'DJ Ella',
-        djImageSrc: '/images/dj-profile-pic.jpg',
-        albumName: "Marvin Gaye - What's Going On",
-        albumImageSrc: '/images/alblum-art.jpg',
-        songs: ["My Girl - The Temptations", "The Wheels on the bus", "Baby Love - The Supremes"],
-        statuses: ["APPROVED", "REJECTED", "PENDING"]
-     });
+
+router.get('/home', async (req, res) => {
+    if(req.session.userProfilePic && req.session.songRecommendations) {
+        const currentSong = await getCurrentSong();
+        const currentDJ = await getCurrentDJ();
+
+        res.render('home', { 
+            userProfilePic: req.session.userProfilePic,
+            djName: currentDJ ? currentDJ.login.username : 'DEBUG: DJ not listed in current state',
+            djImageSrc: currentDJ ? currentDJ.profile.picture : '/images/404-image.png',
+            albumName: currentSong ? currentSong.album : 'DEBUG: Song not listed in current state.',
+            albumImageSrc: currentSong ? currentSong.albumArt : '/images/404-image.png',
+            songs: req.session.songRecommendations.map(rec => rec.name),
+            statuses: req.session.songRecommendations.map(rec => rec.status)
+        });
+    } else {
+        res.redirect('/login');
+    }
 });
 
 module.exports = router;
