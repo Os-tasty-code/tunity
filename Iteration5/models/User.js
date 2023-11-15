@@ -23,6 +23,7 @@ const userSchema = new Schema({
         songRecommendations: [{
             name: { type: String, required: true },
             status: { type: String, enum: ['PENDING', 'ACCEPTED', 'REJECTED'], default: 'PENDING' },
+            dj: {type: String},
             message: String
         }]
     },
