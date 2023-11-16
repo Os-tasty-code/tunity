@@ -40,7 +40,6 @@ function toggle(filepath) {
     let button = document.getElementById("toggle-song");
     let song = document.getElementById("song-audio");
     
-    console.log("filepath: ", song.src)
     const path = "http://localhost:8080/" + filepath
     if(song.src != path) {
         song.src = filepath
