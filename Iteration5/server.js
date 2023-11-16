@@ -6,13 +6,14 @@ const login = require('./routes/login');
 
 
 const mongoose = require('./database');
-const { loadTestData, clearDatabase } = require('./databaseFunctions');
+const { loadTestData, clearDatabase, loadSong } = require('./databaseFunctions');
 const UserModel = require('./models/User');
 const SongModel = require('./models/Song');
 
 mongoose.connection.once('open', () => {
     //loads example docs into mongo if database is empty.
     loadTestData();
+    loadSong("./songs/Song-1.mp3")
     //For debugging
     //clearDatabase();
 });

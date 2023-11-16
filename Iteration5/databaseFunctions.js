@@ -1,5 +1,7 @@
 const UserModel = require('./models/User');
 const SongModel = require('./models/Song');
+const { isContext } = require('vm');
+
 
 //Load testing data into DB if its empty
 async function loadTestData() {
@@ -55,4 +57,40 @@ async function clearDatabase() {
     }
 }
 
-module.exports = { loadTestData, clearDatabase };
+async function loadSong(filepath) {
+    const exists = await SongModel.countDocuments()
+
+    if(exists == 0) {
+        const testSong = new SongModel({
+            title: "Oreburgh City (Day)",
+            artist: "Nintendo feat. Game Freak",
+            album: "Pokemon Diamond/Pearl/Platinum",
+            genre: "Video Game",
+            audioUrl: filepath,
+            albumArtUrl: "/"
+        });
+
+        await testSong.save();
+        console.log("Song added")
+    } else {
+        console.log("Song has already been added")
+    }
+}
+
+    // let bucket = new GridFSBucket(db, {
+    //     bucketName: filepath
+    // })
+
+    // let uploadStream = bucket.openUploadStream(filepath);
+    // let id = uploadStream.id;
+    // readableTrackStream.pipe(uploadStream);
+
+    // uploadStream.on('error', () => {
+    //   return res.status(500).json({ message: "Error uploading file" });
+    // });
+
+    // uploadStream.on('finish', () => {
+    //   return res.status(201).json({ message: "File uploaded successfully, stored under Mongo ObjectID: " + id });
+    // });
+
+module.exports = { loadTestData, clearDatabase, loadSong };

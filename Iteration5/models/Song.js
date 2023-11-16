@@ -9,7 +9,6 @@ const songSchema = new Schema({
     genre: [String],
     audioUrl: { type: String, required: true },
     albumArtUrl: String,
-    length: Number,
 }, { timestamps: true });
 
 const SongModel = mongoose.model('Song', songSchema);
