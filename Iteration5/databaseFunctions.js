@@ -317,6 +317,7 @@ async function getPlaylist() {
     return playlist;
 }
 
+//Author: Ramsha Kapadia
 async function getDJSchedule() {
     let schedule = djScheduleModel.find().exec();
     return schedule;
