@@ -91,6 +91,7 @@ async function loadTestData() {
         if(djCount === 0) {
             const testDJ1 = new djScheduleModel({
                 djName: "DJ Ella",
+                djCode: "a",
                 day: "sun",
                 timeSection: "Morning"
             });
@@ -99,6 +100,7 @@ async function loadTestData() {
 
             const testDJ2 = new djScheduleModel({
                 djName: "DJ Blake",
+                djCode: "b",
                 day: "sun",
                 timeSection: "Evening"
             });
@@ -107,6 +109,7 @@ async function loadTestData() {
 
             const testDJ3 = new djScheduleModel({
                 djName: "DJ Ur Mom",
+                djCode: "c",
                 day: "mon",
                 timeSection: "Morning"
             });
@@ -115,6 +118,7 @@ async function loadTestData() {
 
             const testDJ4 = new djScheduleModel({
                 djName: "DJ Ur Mom",
+                djCode: "c",
                 day: "mon",
                 timeSection: "Evening"
             });
@@ -123,6 +127,7 @@ async function loadTestData() {
 
             const testDJ5 = new djScheduleModel({
                 djName: "DJ JD",
+                djCode: "d",
                 day: "tue",
                 timeSection: "Morning"
             });
@@ -131,6 +136,7 @@ async function loadTestData() {
 
             const testDJ6 = new djScheduleModel({
                 djName: "DJ JD",
+                djCode: "d",
                 day: "tue",
                 timeSection: "Evening"
             });
@@ -139,6 +145,7 @@ async function loadTestData() {
 
             const testDJ7 = new djScheduleModel({
                 djName: "DJ Ella",
+                djCode: "a",
                 day: "wed",
                 timeSection: "Morning"
             });
@@ -147,6 +154,7 @@ async function loadTestData() {
 
             const testDJ8 = new djScheduleModel({
                 djName: "DJ Blake",
+                djCode: "b",
                 day: "wed",
                 timeSection: "Evening"
             });
@@ -155,6 +163,7 @@ async function loadTestData() {
 
             const testDJ9 = new djScheduleModel({
                 djName: "DJ Ella",
+                djCode: "a",
                 day: "thu",
                 timeSection: "Morning"
             });
@@ -162,7 +171,8 @@ async function loadTestData() {
             console.log("TestDJ9 added to database");
 
             const testDJ10 = new djScheduleModel({
-                djName: "DJ Ham",
+                djName: "DJ JD",
+                djCode: "d",
                 day: "thu",
                 timeSection: "Evening"
             });
@@ -171,6 +181,7 @@ async function loadTestData() {
 
             const testDJ11 = new djScheduleModel({
                 djName: "DJ JD",
+                djCode: "d",
                 day: "fri",
                 timeSection: "Morning"
             });
@@ -179,6 +190,7 @@ async function loadTestData() {
 
             const testDJ12 = new djScheduleModel({
                 djName: "DJ Ur Mom",
+                djCode: "c",
                 day: "fri",
                 timeSection: "Evening"
             });
@@ -187,6 +199,7 @@ async function loadTestData() {
 
             const testDJ13 = new djScheduleModel({
                 djName: "DJ Blake",
+                djCode: "b",
                 day: "sat",
                 timeSection: "Morning"
             });
@@ -194,7 +207,8 @@ async function loadTestData() {
             console.log("TestDJ13 added to database");
 
             const testDJ14 = new djScheduleModel({
-                djName: "DJ Ham",
+                djName: "DJ JD",
+                djCode: "d",
                 day: "sat",
                 timeSection: "Evening"
             });
@@ -303,4 +317,9 @@ async function getPlaylist() {
     return playlist;
 }
 
-module.exports = { loadTestData, clearDatabase, getCurrentSong, getCurrentDJ, loadSong, getPlaylist};
+async function getDJSchedule() {
+    let schedule = djScheduleModel.find().exec();
+    return schedule;
+}
+
+module.exports = { loadTestData, clearDatabase, getCurrentSong, getCurrentDJ, loadSong, getPlaylist, getDJSchedule};

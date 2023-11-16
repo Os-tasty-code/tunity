@@ -10,7 +10,7 @@ const session = require('express-session');
 
 
 const mongoose = require('./database');
-const { loadTestData, clearDatabase, loadSong } = require('./databaseFunctions');
+const { loadTestData, clearDatabase, loadSong, getDJSchedule } = require('./databaseFunctions');
 const UserModel = require('./models/User');
 const SongModel = require('./models/Song');
 const CurrentStateModel = require('./models/CurrentState');
@@ -21,7 +21,7 @@ mongoose.connection.once('open', () => {
     loadTestData();
     loadSong("./songs/Song-3.mp3")
     //For debugging
-    //clearDatabase();
+    // clearDatabase();
 });
 
 
@@ -60,9 +60,18 @@ app.get('/', async (req, res) => {
 });
   
 
-app.get('/schedule', (req, res) => {
+app.get('/schedule', async (req, res) => {
     const userProfilePic = "/images/user-profile-pic.png";
-    res.render('schedule', { userProfilePic });
+    const currentSong = await getCurrentSong();
+    const currentDJ = await getCurrentDJ();
+    const djSchedule = await getDJSchedule();
+    let playlist = await getPlaylist();
+
+    res.render('schedule', { 
+        userProfilePic,
+        djs: djSchedule,
+        songs: playlist
+    });
 });
 
 app.get('/playlist', (req, res) => {
