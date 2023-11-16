@@ -20,6 +20,7 @@ const userSchema = new Schema({
     // Listener Data
     listenerData: {
         timeOnSite: { type: Number, default: 0 },
+        position: { type: Number, default: 0 },
         songRecommendations: [{
             name: { type: String, required: true },
             status: { type: String, enum: ['PENDING', 'ACCEPTED', 'REJECTED'], default: 'PENDING' },

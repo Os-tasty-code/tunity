@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                window.location.href = '/home';
+                window.location.href = data.redirectUrl;
             } else {
                 alert('Invalid username or password');
             }
