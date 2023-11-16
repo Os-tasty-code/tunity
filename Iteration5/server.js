@@ -3,12 +3,18 @@ const express = require("express");
 const home = require('./routes/home');
 const signup = require('./routes/signup');
 const login = require('./routes/login');
+const logout = require('./routes/logout');
+const addSongRequest = require('./routes/add-song-request');
+const removeSongRequest = require('./routes/remove-song-request');
+const session = require('express-session');
 
 
 const mongoose = require('./database');
 const { loadTestData, clearDatabase, loadSong } = require('./databaseFunctions');
 const UserModel = require('./models/User');
 const SongModel = require('./models/Song');
+const CurrentStateModel = require('./models/CurrentState');
+const { getCurrentSong, getCurrentDJ } = require('./databaseFunctions');
 
 mongoose.connection.once('open', () => {
     //loads example docs into mongo if database is empty.
@@ -30,16 +36,24 @@ const options = {
 app.set('view engine', 'ejs');
 //uses style sheets inside public
 app.use(express.static('public'))
+app.use(express.json()); //To use json to send data in form.
+app.use(express.urlencoded({ extended: true }))
+app.use(session({ //To store sessions
+    secret: 'IDK if this needs to be unique', 
+    cookie: {}
+}));
 
 
+//Index.ejs default handler.
+app.get('/', async (req, res) => {
+    const currentSong = await getCurrentSong();
+    const currentDJ = await getCurrentDJ();
 
-//With express, you define handlers for routes.
-app.get('/', (req, res) => {
     res.render('index', {
-      djName: 'DJ Ella',
-      djImageSrc: '/images/dj-profile-pic.jpg',
-      albumName: "Marvin Gaye - What's Going On",
-      albumImageSrc: '/images/alblum-art.jpg'
+        djName: currentDJ ? currentDJ.login.username : 'DEBUG: DJ not listed in current state',
+        djImageSrc: currentDJ ? currentDJ.profile.picture : '/images/404-image.png',
+        albumName: currentSong ? currentSong.album : 'DEBUG: Song not listed in current state.',
+        albumImageSrc: currentSong ? currentSong.albumArt : '/images/404-image.png'
     });
 });
   
@@ -92,6 +106,9 @@ app.get('/scripts/:filename', function(req, res) {
 app.use(home);
 app.use(signup);
 app.use(login);
+app.use(logout);
+app.use(addSongRequest);
+app.use(removeSongRequest);
 
 
 app.listen(8080, () => {

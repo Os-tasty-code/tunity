@@ -1,4 +1,4 @@
-// Song.js
+//Contains the schema for a song
 const mongoose = require('../database');
 const Schema = mongoose.Schema;
 
