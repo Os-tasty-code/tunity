@@ -10,7 +10,7 @@
     </head>
     <body>
         <%- include('partials/navbar', {userProfilePic: userProfilePic}) %>
-        <%- include('partials/playlist', {song: [{name: "Song1"}, {name: "Song2"}]}) %>
+        <%- include('partials/playlist', {song: songs}) %>
         <div class="content">
             <div class="queue">
                 <% let queue = [{name: "Song3", user: "User1"}, {name: "Song4", user: "User2"}] %>
