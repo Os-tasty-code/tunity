@@ -1,6 +1,7 @@
 const UserModel = require('./models/User');
 const SongModel = require('./models/Song');
 const CurrentStateModel = require('./models/CurrentState');
+const mongoose = require('mongoose');
 //Images stored in separate file because they are huge. (Alternatively, make a base64 converter script later to dynamically convert images to strings for the db)
 const {imageString_user, imageString_MarvinGaye, imageString_DJElla} = require('./public/scripts/imageStrings');
 
@@ -125,6 +126,7 @@ async function getCurrentSong() {
     }
 }
 
+//Jane Jacobs
 //Return the current dj document
 async function getCurrentDJ() {
     try {
@@ -136,7 +138,7 @@ async function getCurrentDJ() {
     }
 }
 
-module.exports = { loadTestData, clearDatabase, getCurrentSong, getCurrentDJ };
+// O Dodart
 async function loadSong(filepath) {
     const exists = await SongModel.countDocuments()
 
@@ -157,20 +159,9 @@ async function loadSong(filepath) {
     }
 }
 
-    // let bucket = new GridFSBucket(db, {
-    //     bucketName: filepath
-    // })
+async function getPlaylist() {
+    let playlist = SongModel.find().exec();
+    return playlist;
+}
 
-    // let uploadStream = bucket.openUploadStream(filepath);
-    // let id = uploadStream.id;
-    // readableTrackStream.pipe(uploadStream);
-
-    // uploadStream.on('error', () => {
-    //   return res.status(500).json({ message: "Error uploading file" });
-    // });
-
-    // uploadStream.on('finish', () => {
-    //   return res.status(201).json({ message: "File uploaded successfully, stored under Mongo ObjectID: " + id });
-    // });
-
-module.exports = { loadTestData, clearDatabase, getCurrentSong, getCurrentDJ, loadSong };
+module.exports = { loadTestData, clearDatabase, getCurrentSong, getCurrentDJ, loadSong, getPlaylist};
