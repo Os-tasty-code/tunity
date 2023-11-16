@@ -10,15 +10,16 @@ const session = require('express-session');
 
 
 const mongoose = require('./database');
-const { loadTestData, clearDatabase } = require('./databaseFunctions');
+const { loadTestData, clearDatabase, loadSong } = require('./databaseFunctions');
 const UserModel = require('./models/User');
 const SongModel = require('./models/Song');
 const CurrentStateModel = require('./models/CurrentState');
-const { getCurrentSong, getCurrentDJ } = require('./databaseFunctions');
+const { getCurrentSong, getCurrentDJ, getPlaylist } = require('./databaseFunctions');
 
 mongoose.connection.once('open', () => {
     //loads example docs into mongo if database is empty.
     loadTestData();
+    loadSong("./songs/Song-3.mp3")
     //For debugging
     //clearDatabase();
 });
@@ -47,12 +48,14 @@ app.use(session({ //To store sessions
 app.get('/', async (req, res) => {
     const currentSong = await getCurrentSong();
     const currentDJ = await getCurrentDJ();
+    let playlist = await getPlaylist();
 
     res.render('index', {
         djName: currentDJ ? currentDJ.login.username : 'DEBUG: DJ not listed in current state',
         djImageSrc: currentDJ ? currentDJ.profile.picture : '/images/404-image.png',
         albumName: currentSong ? currentSong.album : 'DEBUG: Song not listed in current state.',
-        albumImageSrc: currentSong ? currentSong.albumArt : '/images/404-image.png'
+        albumImageSrc: currentSong ? currentSong.albumArt : '/images/404-image.png',
+        songs: playlist
     });
 });
   

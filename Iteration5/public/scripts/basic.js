@@ -36,9 +36,15 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /*onclick function for play button*/
-function toggle() {
+function toggle(filepath) {
     let button = document.getElementById("toggle-song");
     let song = document.getElementById("song-audio");
+    
+    const path = "http://localhost:8080/" + filepath
+    if(song.src != path) {
+        song.src = filepath
+    }
+
     setInterval(() => {
         if(isNaN(song.duration)) {
             console.log("invalid duration")

@@ -1,8 +1,12 @@
 const UserModel = require('./models/User');
 const SongModel = require('./models/Song');
 const CurrentStateModel = require('./models/CurrentState');
+const mongoose = require('mongoose');
 //Images stored in separate file because they are huge. (Alternatively, make a base64 converter script later to dynamically convert images to strings for the db)
 const {imageString_user, imageString_MarvinGaye, imageString_DJElla} = require('./public/scripts/imageStrings');
+
+const { isContext } = require('vm');
+const djScheduleModel = require('./models/DJSchedule');
 
 
 //Load test data if db is empty.
@@ -49,8 +53,7 @@ async function loadTestData() {
                     volume: 50
                 },
                 profile: {
-                    bio: 'Motown with a double shot of depresso',
-                    picture: imageString_DJElla
+                    bio: 'Motown with a double shot of depresso'
                 },
                 djData: {
                     temp: 'some_temp_data'
@@ -58,6 +61,145 @@ async function loadTestData() {
             });
             await testDj.save();
             console.log('Test DJ inserted into the database.');
+
+            // author of testProducer: Ramsha Kapadia
+            // create a save test Producer
+            const testProducer = new UserModel({
+                login: {
+                    username: 'rvamaswamy',
+                    password: 'Musk4Life',
+                    accountType: 'producer'
+                },
+                settings: {
+                    volume: 50
+                },
+                profile: {
+                    bio: 'Need to cut costs as much as possible',
+                    picture: imageString_DJElla
+                },
+                producerData: {
+                    temp: 'some_temp_data'
+                }
+            });
+            await testProducer.save();
+            console.log('Test Producer inserted into the database.');
+        }
+
+        // author: Ramsha Kapadia
+        // check and insert test DJs for schedule
+        const djCount = await djScheduleModel.countDocuments();
+        if(djCount === 0) {
+            const testDJ1 = new djScheduleModel({
+                djName: "DJ Ella",
+                day: "sun",
+                timeSection: "Morning"
+            });
+            await testDJ1.save();
+            console.log("TestDJ1 added to database");
+
+            const testDJ2 = new djScheduleModel({
+                djName: "DJ Blake",
+                day: "sun",
+                timeSection: "Evening"
+            });
+            await testDJ2.save();
+            console.log("TestDJ2 added to database");
+
+            const testDJ3 = new djScheduleModel({
+                djName: "DJ Ur Mom",
+                day: "mon",
+                timeSection: "Morning"
+            });
+            await testDJ3.save();
+            console.log("TestDJ3 added to database");
+
+            const testDJ4 = new djScheduleModel({
+                djName: "DJ Ur Mom",
+                day: "mon",
+                timeSection: "Evening"
+            });
+            await testDJ4.save();
+            console.log("TestDJ4 added to database");
+
+            const testDJ5 = new djScheduleModel({
+                djName: "DJ JD",
+                day: "tue",
+                timeSection: "Morning"
+            });
+            await testDJ5.save();
+            console.log("TestDJ5 added to database");
+
+            const testDJ6 = new djScheduleModel({
+                djName: "DJ JD",
+                day: "tue",
+                timeSection: "Evening"
+            });
+            await testDJ6.save();
+            console.log("TestDJ6 added to database");
+
+            const testDJ7 = new djScheduleModel({
+                djName: "DJ Ella",
+                day: "wed",
+                timeSection: "Morning"
+            });
+            await testDJ7.save();
+            console.log("TestDJ7 added to database");
+
+            const testDJ8 = new djScheduleModel({
+                djName: "DJ Blake",
+                day: "wed",
+                timeSection: "Evening"
+            });
+            await testDJ8.save();
+            console.log("TestDJ8 added to database");
+
+            const testDJ9 = new djScheduleModel({
+                djName: "DJ Ella",
+                day: "thu",
+                timeSection: "Morning"
+            });
+            await testDJ9.save();
+            console.log("TestDJ9 added to database");
+
+            const testDJ10 = new djScheduleModel({
+                djName: "DJ Ham",
+                day: "thu",
+                timeSection: "Evening"
+            });
+            await testDJ10.save();
+            console.log("TestDJ10 added to database");
+
+            const testDJ11 = new djScheduleModel({
+                djName: "DJ JD",
+                day: "fri",
+                timeSection: "Morning"
+            });
+            await testDJ11.save();
+            console.log("TestDJ11 added to database");
+
+            const testDJ12 = new djScheduleModel({
+                djName: "DJ Ur Mom",
+                day: "fri",
+                timeSection: "Evening"
+            });
+            await testDJ12.save();
+            console.log("TestDJ12 added to database");
+
+            const testDJ13 = new djScheduleModel({
+                djName: "DJ Blake",
+                day: "sat",
+                timeSection: "Morning"
+            });
+            await testDJ13.save();
+            console.log("TestDJ13 added to database");
+
+            const testDJ14 = new djScheduleModel({
+                djName: "DJ Ham",
+                day: "sat",
+                timeSection: "Evening"
+            });
+            await testDJ14.save();
+            console.log("TestDJ14 added to database");
         }
 
         // Check and insert test song
@@ -123,6 +265,7 @@ async function getCurrentSong() {
     }
 }
 
+//Jane Jacobs
 //Return the current dj document
 async function getCurrentDJ() {
     try {
@@ -134,4 +277,30 @@ async function getCurrentDJ() {
     }
 }
 
-module.exports = { loadTestData, clearDatabase, getCurrentSong, getCurrentDJ };
+// O Dodart
+async function loadSong(filepath) {
+    const exists = await SongModel.countDocuments()
+
+    if(exists == 2) {
+        const testSong = new SongModel({
+            title: "Accumula Town",
+            artist: "Nintendo feat. Game Freak",
+            album: "Pokemon: Black & White",
+            genre: "Video Game",
+            audioUrl: filepath,
+            albumArtUrl: "/"
+        });
+
+        await testSong.save();
+        console.log("Song added")
+    } else {
+        console.log("Song has already been added")
+    }
+}
+
+async function getPlaylist() {
+    let playlist = SongModel.find().exec();
+    return playlist;
+}
+
+module.exports = { loadTestData, clearDatabase, getCurrentSong, getCurrentDJ, loadSong, getPlaylist};

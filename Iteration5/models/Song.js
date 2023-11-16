@@ -8,8 +8,7 @@ const songSchema = new Schema({
     album: String,
     genre: [String],
     audioUrl: { type: String, required: true },
-    albumArt: String,
-    length: Number,
+    albumArtUrl: String,
 }, { timestamps: true });
 
 const SongModel = mongoose.model('Song', songSchema);

@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", () => {
     let w = 0;
     let s = 1;
     let dur = Math.ceil(Math.random() * 50) + 50;
-    console.log(dur);
     setInterval(() => {
         w += (dur/100);
         prog.style.width = w + "%";

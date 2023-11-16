@@ -30,8 +30,8 @@ router.post('/login', async (req, res) => {
                 case 'producer':
                     // Redirect to producer-specific page
                     //add producer info to session here
-                    console.error("DEBUG: Producer home page not connected in /routes/login.js")
-                    res.json({ success: true, redirectUrl: '/' }); // update producerHome to actual page.
+                    //console.error("DEBUG: Producer home page not connected in /routes/login.js")
+                    res.json({ success: true, redirectUrl: '/schedule' }); // update producerHome to actual page.
                     break;
             }
 
