@@ -18,8 +18,8 @@ const { getCurrentSong, getCurrentDJ, getPlaylist } = require('./databaseFunctio
 
 mongoose.connection.once('open', () => {
     //loads example docs into mongo if database is empty.
-    loadTestData();
-    loadSong("./songs/Song-3.mp3")
+    // loadTestData();
+    // loadSong("./songs/Song-3.mp3")
     //For debugging
     // clearDatabase();
 });
@@ -29,8 +29,6 @@ const app = express();
 const options = {
     root: path.join(__dirname, "/")
 };
-
-
 
 //Tell node to use ejs.
 app.set('view engine', 'ejs');
@@ -79,9 +77,14 @@ app.get('/playlist', (req, res) => {
     res.render('producer-playlist', { userProfilePic });
 });
 
-app.get('/queue', (req, res) => {
+app.get('/queue', async (req, res) => {
     const userProfilePic = "/images/user-profile-pic.png";
-    res.render('queue', {userProfilePic}); // This will render views/index.ejs
+    const songs = await getPlaylist();
+
+    res.render('queue', {
+        userProfilePic: userProfilePic,
+        songs: songs
+    }); 
 });
 
 /*pathing for image folder*/
