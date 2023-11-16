@@ -281,11 +281,11 @@ async function getCurrentDJ() {
 async function loadSong(filepath) {
     const exists = await SongModel.countDocuments()
 
-    if(exists == 0) {
+    if(exists == 2) {
         const testSong = new SongModel({
-            title: "Oreburgh City (Day)",
+            title: "Accumula Town",
             artist: "Nintendo feat. Game Freak",
-            album: "Pokemon Diamond/Pearl/Platinum",
+            album: "Pokemon: Black & White",
             genre: "Video Game",
             audioUrl: filepath,
             albumArtUrl: "/"

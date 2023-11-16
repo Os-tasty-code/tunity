@@ -19,7 +19,7 @@ const { getCurrentSong, getCurrentDJ, getPlaylist } = require('./databaseFunctio
 mongoose.connection.once('open', () => {
     //loads example docs into mongo if database is empty.
     loadTestData();
-    loadSong("./songs/Song-1.mp3")
+    loadSong("./songs/Song-3.mp3")
     //For debugging
     //clearDatabase();
 });
@@ -49,7 +49,7 @@ app.get('/', async (req, res) => {
     const currentSong = await getCurrentSong();
     const currentDJ = await getCurrentDJ();
     let playlist = await getPlaylist();
-    
+
     res.render('index', {
         djName: currentDJ ? currentDJ.login.username : 'DEBUG: DJ not listed in current state',
         djImageSrc: currentDJ ? currentDJ.profile.picture : '/images/404-image.png',
