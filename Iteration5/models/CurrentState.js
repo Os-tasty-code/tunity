@@ -1,4 +1,4 @@
-//Stores current dj and song being played. Maybe update to also include an 'up next' too
+//Stores current dj and song being playeds
 const mongoose = require('../database');
 const Schema = mongoose.Schema;
 

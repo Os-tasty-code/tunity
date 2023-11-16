@@ -42,11 +42,12 @@ app.use(session({ //To store sessions
 }));
 
 
-//Index.ejs default handler.
+//Jane Jacobs & O Dodart
 app.get('/', async (req, res) => {
     const currentSong = await getCurrentSong();
     const currentDJ = await getCurrentDJ();
     let playlist = await getPlaylist();
+    loadTestData();
 
     res.render('index', {
         djName: currentDJ ? currentDJ.login.username : 'DEBUG: DJ not listed in current state',
@@ -77,6 +78,7 @@ app.get('/playlist', (req, res) => {
     res.render('producer-playlist', { userProfilePic });
 });
 
+//O Dodart
 app.get('/queue', async (req, res) => {
     const userProfilePic = "/images/user-profile-pic.png";
     const songs = await getPlaylist();

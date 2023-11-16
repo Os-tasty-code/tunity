@@ -1,7 +1,11 @@
+const CurrentStateModel = require('../models/CurrentState'); 
+const SongModel = require('../models/Song'); 
+
+//O Dodart
 document.addEventListener("DOMContentLoaded", () => {
     /* start song playing */
     let song = document.getElementById("song-audio")
-    song.src = "songs/Song-1.mp3";
+
     toggle();
     /* progress bar changes over time */
     let prog = document.getElementsByClassName("progress")[0];
@@ -20,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         if(w > 100 && list.children.length > 1) { /*progress bar restarts and moves next song up*/
             w = 0;
+
             s++;
             document.getElementById("current").children[0].children[1].innerHTML = "Song2";
             list = document.getElementById("playlist").children[0];

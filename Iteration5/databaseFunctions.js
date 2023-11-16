@@ -14,29 +14,22 @@ async function loadTestData() {
     let testSong, testDj;
     try {
         const userCount = await UserModel.countDocuments();
-        if (userCount === 0) {
+        if (userCount === 1) {
             // Create and save test listener user
             const testUser = new UserModel({
                 login: {
-                    username: 'user',
-                    password: 'user',
-                    accountType: 'listener'
+                    username: 'djella',
+                    password: 'sickbeats',
+                    accountType: 'dj'
                 },
                 settings: {
                     volume: 70
                 },
                 profile: {
-                    bio: 'Hi this is philip',
-                    picture: imageString_user
+                    bio: 'Motown with a double shot of depresso'
                 },
-                listenerData: {
-                    timeOnSite: 120,
-                    songRecommendations: [
-                        { name: 'Accepted Song', status: 'ACCEPTED', dj: 'DJ Ella'},
-                        { name: 'Rejected Song', status: 'REJECTED', dj: 'DJ Ella'}, 
-                        { name: 'Pending Song 1', status: 'PENDING', dj: 'DJ Ella'}, 
-                        { name: 'Pending Song 2', status: 'PENDING', dj: 'DJ Ella'}
-                    ]
+                djData: {
+                    temp: 'some_temp_data'
                 },
             });
             await testUser.save();
