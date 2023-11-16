@@ -51,8 +51,7 @@ async function loadTestData() {
                     volume: 50
                 },
                 profile: {
-                    bio: 'Motown with a double shot of depresso',
-                    picture: imageString_DJElla
+                    bio: 'Motown with a double shot of depresso'
                 },
                 djData: {
                     temp: 'some_temp_data'
@@ -60,6 +59,28 @@ async function loadTestData() {
             });
             await testDj.save();
             console.log('Test DJ inserted into the database.');
+
+            // author of testProducer: Ramsha Kapadia
+            // create a save test Producer
+            const testProducer = new UserModel({
+                login: {
+                    username: 'rvamaswamy',
+                    password: 'Musk4Life',
+                    accountType: 'producer'
+                },
+                settings: {
+                    volume: 50
+                },
+                profile: {
+                    bio: 'Need to cut costs as much as possible',
+                    picture: imageString_DJElla
+                },
+                producerData: {
+                    temp: 'some_temp_data'
+                }
+            });
+            await testProducer.save();
+            console.log('Test Producer inserted into the database.');
         }
 
         // Check and insert test song
