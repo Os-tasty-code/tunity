@@ -173,4 +173,4 @@ async function loadSong(filepath) {
     //   return res.status(201).json({ message: "File uploaded successfully, stored under Mongo ObjectID: " + id });
     // });
 
-module.exports = { loadTestData, clearDatabase, loadSong };
+module.exports = { loadTestData, clearDatabase, getCurrentSong, getCurrentDJ, loadSong };
