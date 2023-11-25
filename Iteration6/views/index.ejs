@@ -1,0 +1,24 @@
+<!--Jane Jacobs & O Dodart-->
+<!DOCTYPE html>
+<html>
+    <%- include('partials/head') %>
+    <body>
+      <%- include('partials/navbar-no-login') %>
+      <%- include('partials/playlist', {song: songs}) %>
+        
+      <div class="content">
+        <%- include('partials/left-container') %>
+        <!-- Log in messages only used here, so partials not useful -->
+        <div class="request-container">
+          <div class="warning-icon"></div>
+          <div class="warning-text">
+            <p> You must be logged in to make suggestions to the DJ</p> 
+            <p> Already have an account? </p>
+            <a href="login">Click here to login</a>
+            <p> Need an account? </p>
+            <a href="signup">Click here to join Tunity and DJ Ella's show today!</a>
+          </div>
+        </div>
+      </div>
+    </body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+
+<!--Author: Ramsha Kapadia-->
+<html>
+    <head>
+        <title>Tunity</title>
+        <link rel="stylesheet" href="/schedule.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
+
+        <!--<script src="/scripts/schedule.js"></script>-->
+    </head>
+    <body>
+        <%- include('partials/producer-navbar') %>
+        <%- include('partials/playlist', {song: songs}) %>
+        <div class="content">
+            <%- include('partials/schedule-partial', {djs: djs, songs: songs}) %>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <%- include('partials/head', { title: 'Tunity - Login' }) %>
+    <script src="/scripts/login.js"></script>
+    <body>
+        <%- include('partials/navbar-no-login') %>
+        <%- include('partials/playlist', {song: [{name: "Song1"}, {name: "Song2"}]}) %>
+        <div class="content">
+            <div class="login-window">
+                <form id="login-form" action="/login" method="POST">
+                    <legend>Login</legend>
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username">
+                    <br>
+                    <label for="password">Password:</label>
+                    <input type="text" id="password" name="password">
+                    <br>
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

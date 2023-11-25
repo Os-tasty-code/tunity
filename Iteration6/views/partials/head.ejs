@@ -1,0 +1,11 @@
+<head>
+    <title><%= typeof title !== 'undefined' ? title : 'Tunity' %></title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
+    <script src="scripts/basic.js"></script>
+    <% if (typeof scripts !== 'undefined' && Array.isArray(scripts)) { %>
+        <% scripts.forEach(function(script) { %>
+            <script src="scripts/<%= script %>.js" defer></script>
+        <% }); %>
+    <% } %>
+</head>
