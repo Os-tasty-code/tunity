@@ -14,7 +14,7 @@ const { loadTestData, clearDatabase, loadSong, getDJSchedule } = require('./data
 const UserModel = require('./models/User');
 const SongModel = require('./models/Song');
 const CurrentStateModel = require('./models/CurrentState');
-const { getCurrentSong, getCurrentDJ, getPlaylist } = require('./databaseFunctions');
+const { getCurrentSong, getCurrentDJ, getPlaylist, loadPlaylistSong } = require('./databaseFunctions');
 
 mongoose.connection.once('open', () => {
     //loads example docs into mongo if database is empty.
@@ -47,7 +47,8 @@ app.get('/', async (req, res) => {
     const currentSong = await getCurrentSong();
     const currentDJ = await getCurrentDJ();
     let playlist = await getPlaylist();
-    loadTestData();
+    console.log(playlist[0].song)
+    // let playlistsong = await loadPlaylistSong()
 
     res.render('index', {
         djName: currentDJ ? currentDJ.login.username : 'DEBUG: DJ not listed in current state',

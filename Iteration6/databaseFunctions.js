@@ -1,6 +1,8 @@
 const UserModel = require('./models/User');
 const SongModel = require('./models/Song');
 const CurrentStateModel = require('./models/CurrentState');
+const PlaylistSongModel = require('./models/Playlist');
+
 const mongoose = require('mongoose');
 //Images stored in separate file because they are huge. (Alternatively, make a base64 converter script later to dynamically convert images to strings for the db)
 const {imageString_user, imageString_MarvinGaye, imageString_DJElla} = require('./public/scripts/imageStrings');
@@ -305,8 +307,24 @@ async function loadSong(filepath) {
     }
 }
 
+async function loadPlaylistSong() {
+    const exists = await PlaylistSongModel.countDocuments()
+    if(exists == 2) {
+        let songs = await SongModel.find().exec();
+        // priority: 0-150 = DJ added, 151-infinite = user added
+        const playlistSong = new PlaylistSongModel({
+            song: songs[2],
+            priority: 60
+        })
+        await playlistSong.save();
+        console.log("Playlist Song added")
+    } else {
+        console.log("Song has already been added")
+    }
+}
+
 async function getPlaylist() {
-    let playlist = SongModel.find().exec();
+    let playlist = PlaylistSongModel.find().exec();
     return playlist;
 }
 
@@ -316,4 +334,4 @@ async function getDJSchedule() {
     return schedule;
 }
 
-module.exports = { loadTestData, clearDatabase, getCurrentSong, getCurrentDJ, loadSong, getPlaylist, getDJSchedule};
+module.exports = { loadTestData, clearDatabase, getCurrentSong, getCurrentDJ, loadSong, getPlaylist, getDJSchedule, loadPlaylistSong};
