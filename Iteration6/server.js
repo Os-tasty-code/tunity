@@ -47,7 +47,7 @@ app.get('/', async (req, res) => {
     const currentSong = await getCurrentSong();
     const currentDJ = await getCurrentDJ();
     let playlist = await getPlaylist();
-    console.log(playlist[0].song)
+
     // let playlistsong = await loadPlaylistSong()
 
     res.render('index', {

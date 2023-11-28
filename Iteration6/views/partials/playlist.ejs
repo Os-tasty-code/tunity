@@ -4,21 +4,21 @@
       <div id="current">
         <li>
           <button id="toggle-song">▶</button>
-          <%= songs[0].song.title %>
+          <%= songs[0][0].title %>
           
           <script>
             document.getElementById('toggle-song').onclick = function() {
-              toggle("<%= songs[0].song.audioUrl %>");
+              toggle("<%= songs[0][0].audioUrl %>");
             };
           </script>
         </li>
         <div class="bar-background">
             <audio id="song-audio" type="audio/mpeg"></audio>
-            <input type="range" min="0" max="100" value="50" class="progress"></input>
+            <input type="range" min="0" max="100" value="0" class="progress"></input>
         </div>
       </div>
       <% for(i=1; i < songs.length; i++) { %>
-        <li><%= songs[i].song.title %></li>
+        <li><%= songs[i][0].title %></li>
       <% } %>
       <li>Recommend Songs!</li>
     </ol>

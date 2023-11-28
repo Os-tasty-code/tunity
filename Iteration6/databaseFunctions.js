@@ -324,8 +324,13 @@ async function loadPlaylistSong() {
 }
 
 async function getPlaylist() {
-    let playlist = PlaylistSongModel.find().exec();
-    return playlist;
+    let playlist = await PlaylistSongModel.find().exec();
+    //sort based on priority
+    let songs = [];
+    for (i = 0; i < playlist.length; i++) {
+        songs[i] = await SongModel.find({_id: playlist[i].song}).exec();
+    }
+    return songs;
 }
 
 //Author: Ramsha Kapadia
