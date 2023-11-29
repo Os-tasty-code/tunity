@@ -1,6 +1,3 @@
-const CurrentStateModel = require('../models/CurrentState'); 
-const SongModel = require('../models/Song'); 
-
 //O Dodart
 document.addEventListener("DOMContentLoaded", () => {
     /* start song playing */

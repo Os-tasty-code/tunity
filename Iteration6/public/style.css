@@ -261,12 +261,25 @@ body {
 
 
 */
-.request-container legend {
-  font-size: 32px;
+
+.song-suggestion-form {
+  border: 6px solid #02d0DB;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px; 
+}
+
+
+.song-suggestion-form legend {
+  font-size: 48px;
   color: white;
   text-align: center;
   padding-bottom: 10px;
+  font-weight: bold; /* Make text bold */
+  width: 100%;
 }
+
+
 
 .request-container .input-wrapper {
   display: flex;
@@ -281,18 +294,21 @@ body {
   color: black;
   padding: 10px;
   margin: 10px 0;
-  width: 97.5%; 
+  width: 98%; /* Expand width */
+  background-color: #ffffff; /* Lighter background for input */
 }
 
 .request-container input[type="button"] {
   font-size: 24px;
   color: white;
-  background-color: #3500d3;
+  background-color: #3500d3; /* Existing blue color */
   border: none;
   padding: 10px 20px;
   cursor: pointer;
-  width: 100%; 
+  width: 100%; /* Expand width */
+  font-weight: bold; /* Make text bold */
 }
+
 
 .request-container ol {
   font-size: 24px;
@@ -339,6 +355,7 @@ body {
   background-image: url('./images/request-pending.png'); 
 }
 
+.remove-button,
 .cancel-button {
   background-color: #3500d3;
   color: white;

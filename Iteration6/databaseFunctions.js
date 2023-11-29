@@ -11,63 +11,71 @@ const { isContext } = require('vm');
 const djScheduleModel = require('./models/DJSchedule');
 
 
-//Load test data if db is empty.
+
 async function loadTestData() {
-    let testSong, testDj;
     try {
+        // Check counts for each type of data
         const userCount = await UserModel.countDocuments();
-        if (userCount === 1) {
-            // Create and save test listener user
+        const songCount = await SongModel.countDocuments();
+        const currentStateCount = await CurrentStateModel.countDocuments();
+        const playlistSongCount = await PlaylistSongModel.countDocuments();
+        const djCount = await djScheduleModel.countDocuments();
+        let testSong = null;
+        let testDj = null; 
+
+        // Load test users if needed
+        if (userCount === 0) {
             const testUser = new UserModel({
+                login: {
+                    username: 'user',
+                    password: 'user',
+                    accountType: 'listener'
+                },
+                settings: { volume: 70 },
+                profile: {
+                    bio: 'Hi this is Philip',
+                    picture: imageString_user
+                },
+                listenerData: {
+                    timeOnSite: 120,
+                    songRecommendations: [
+                        { name: 'Accepted Song', status: 'ACCEPTED'},
+                        { name: 'Rejected Song', status: 'REJECTED' },
+                        { name: 'Pending Song 1', status: 'PENDING' },
+                        { name: 'Pending Song 2', status: 'PENDING' },
+                        { name: 'Accepted Song', status: 'ACCEPTED', dj: 'djella'},
+                        { name: 'Rejected Song', status: 'REJECTED', dj: 'djella'}, 
+                        { name: 'Pending Song 1', status: 'PENDING', dj: 'djella'}, 
+                        { name: 'Pending Song 2', status: 'PENDING', dj: 'djella'}
+                    ]
+                },
+            });
+            await testUser.save();
+
+            testDj = new UserModel({
                 login: {
                     username: 'djella',
                     password: 'sickbeats',
                     accountType: 'dj'
                 },
-                settings: {
-                    volume: 70
-                },
+                settings: { volume: 70 },
                 profile: {
-                    bio: 'Motown with a double shot of depresso'
-                },
-                djData: {
-                    temp: 'some_temp_data'
-                },
-            });
-            await testUser.save();
-            console.log('Test user inserted into the database.');
-
-            // Create and save test DJ
-            testDj = new UserModel({
-                login: {
-                    username: 'DJ Ella',
-                    password: 'dj',
-                    accountType: 'dj'
-                },
-                settings: {
-                    volume: 50
-                },
-                profile: {
-                    bio: 'Motown with a double shot of depresso'
+                    bio: 'Motown with a double shot of depresso',
+                    picture: imageString_DJElla
                 },
                 djData: {
                     temp: 'some_temp_data'
                 }
             });
             await testDj.save();
-            console.log('Test DJ inserted into the database.');
 
-            // author of testProducer: Ramsha Kapadia
-            // create a save test Producer
             const testProducer = new UserModel({
                 login: {
                     username: 'rvamaswamy',
                     password: 'Musk4Life',
                     accountType: 'producer'
                 },
-                settings: {
-                    volume: 50
-                },
+                settings: { volume: 50 },
                 profile: {
                     bio: 'Need to cut costs as much as possible',
                     picture: imageString_DJElla
@@ -77,12 +85,11 @@ async function loadTestData() {
                 }
             });
             await testProducer.save();
-            console.log('Test Producer inserted into the database.');
+
+            console.log('Test users inserted into the database.');
         }
 
-        // author: Ramsha Kapadia
-        // check and insert test DJs for schedule
-        const djCount = await djScheduleModel.countDocuments();
+        // Load test DJs for schedule if needed
         if(djCount === 0) {
             const testDJ1 = new djScheduleModel({
                 djName: "DJ Ella",
@@ -214,40 +221,46 @@ async function loadTestData() {
             console.log("DJs already added, count = " + djCount);
         }
 
-        // Check and insert test song
-        const songCount = await SongModel.countDocuments();
+        // Load test songs if needed
         if (songCount === 0) {
             testSong = new SongModel({
-                title: "What's Going On",
-                artist: "Marvin Gaye",
-                album: "What's Going On",
-                genre: ["Motown"],
-                audioUrl: 'temp',
-                albumArt: imageString_MarvinGaye,
-                length: 73
+                title: "Accumula Town",
+                artist: "Nintendo feat. Game Freak",
+                album: "Pokemon: Black & White",
+                genre: ["Video Game"],
+                audioUrl: "/songs/Song-1.mp3",
+                albumArtUrl: "/images/album-art-accumula-town.jpg"
             });
             await testSong.save();
-            console.log('Test song inserted into the database.');
+            await loadSong("Song-2.mp3", "Is this ashleys theme?", "Nintendo", "Wario ware", ["Video Game"], "/images/album-art-ashleys-theme.jpg");
+            await loadSong("Song-3.mp3", "idk some harvest moon sounding jazz", "Nintendo", "harvest moon", ["Video Game"], "/images/album-art-harvest-moon.jpg");
+
         }
 
-        await loadSong("Song-1.mp3", "Accumula Town", "Nintendo feat. Game Freak", "Pokemon: Black & White", ["Video Game"], "/images/album-art-accumula-town.jpg");
-        await loadSong("Song-2.mp3", "Is this ashleys theme?", "Nintendo", "Wario ware", ["Video Game"], "/images/album-art-ashleys-theme.jpg");
-        await loadSong("Song-3.mp3", "idk some harvest moon sounding jazz", "Nintendo", "harvest moon", ["Video Game"], "/images/album-art-harvest-moon.jpg");
+        // Load songs into playlist if needed
+        if (playlistSongCount === 0) {
+            await loadPlaylistSong("Accumula Town", 10);
+            await loadPlaylistSong("Is this ashleys theme?", 10);
+            await loadPlaylistSong("idk some harvest moon sounding jazz", 10);
+        }
 
-        // Update current state with these values
-        const currentStateCount = await CurrentStateModel.countDocuments();
+        // Update current state if needed
         if (currentStateCount === 0) {
             const currentState = new CurrentStateModel({
-                currentSong: testSong ? testSong._id : null,  // Check if testSong exists
-                currentDj: testDj ? testDj._id : null       // Check if testDj exists
+                currentSong: testSong ? testSong._id : null,
+                currentDj: testDj ? testDj._id : null
             });
             await currentState.save();
+
             console.log('Current state updated with test song and DJ.');
         }
     } catch (err) {
         console.error('Error inserting test data:', err);
     }
 }
+
+
+
 
 //Delete all docs in the db for debugging
 async function clearDatabase() {
@@ -268,10 +281,21 @@ async function clearDatabase() {
         await CurrentStateModel.deleteMany({});
         console.log('Current state deleted.');
 
+        // Add deletion for each of your other models
+        // For example:
+        await PlaylistSongModel.deleteMany({});
+        console.log('Playlist songs deleted.');
+
+        await djScheduleModel.deleteMany({});
+        console.log('DJ schedules deleted.');
+
+        // Include other models similarly
+
     } catch (err) {
         console.error('Error clearing the database:', err);
     }
 }
+
 
 
 //Return the current song document
@@ -319,21 +343,31 @@ async function loadSong(filename, title, artist, album, genre, albumArtUrl) {
 }
 
 
-async function loadPlaylistSong() {
-    const exists = await PlaylistSongModel.countDocuments()
-    if(exists == 2) {
-        let songs = await SongModel.find().exec();
-        // priority: 0-150 = DJ added, 151-infinite = user added
+async function loadPlaylistSong(songTitle, priority) {
+    try {
+        // Find the song by title in the SongModel
+        const song = await SongModel.findOne({ title: songTitle });
+
+        // Check if the song exists
+        if (!song) {
+            console.log("Song not found in the database.");
+            return;
+        }
+
+        // Create a new playlist song entry with the given song and priority
         const playlistSong = new PlaylistSongModel({
-            song: songs[2],
-            priority: 60
-        })
+            song: song._id,
+            priority: priority
+        });
+
+        // Save the new playlist song
         await playlistSong.save();
-        console.log("Playlist Song added")
-    } else {
-        console.log("Song has already been added")
+        console.log("Playlist Song added:", songTitle);
+    } catch (err) {
+        console.error("Error adding song to playlist:", err);
     }
 }
+
 
 async function getPlaylist() {
     let playlist = await PlaylistSongModel.find().exec();

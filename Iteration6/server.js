@@ -16,13 +16,22 @@ const SongModel = require('./models/Song');
 const CurrentStateModel = require('./models/CurrentState');
 const { getCurrentSong, getCurrentDJ, getPlaylist, loadPlaylistSong } = require('./databaseFunctions');
 
+
+
 mongoose.connection.once('open', () => {
-    //loads example docs into mongo if database is empty.
-    loadTestData();
-    // loadSong("./songs/Song-3.mp3")
-    //For debugging
-    // clearDatabase();
+    (async () => {
+        try {
+            //This is safe to leave uncommented all the time, it'll just make sure the database only contains the data from loadtestdata()
+            await clearDatabase();
+            console.log('Database cleared successfully.');
+            await loadTestData();
+            console.log('Test data loaded successfully.');
+        } catch (err) {
+            console.error('Error during database initialization:', err);
+        }
+    })();
 });
+
 
 
 const app = express();

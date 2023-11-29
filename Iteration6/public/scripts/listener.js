@@ -102,15 +102,54 @@ document.onkeydown = function (event) {
 function flashList() {
     let requestsList = document.getElementById("requests-list");
     let listItems = requestsList.querySelectorAll("li");
-    for (let index = 0; index < listItems.length; index++) {
-        let listItem = listItems[index];
-        // Use setTimeout to change the background color and reset it to the original color
+
+    listItems.forEach((listItem, index) => {
+        // Flash effect for all list items
         setTimeout(function () {
             listItem.style.backgroundColor = "#3500d3";
+
+            // If it's the last item, change the cancel button color
+            if (index === listItems.length - 1) {
+                let cancelBtn = listItem.querySelector('.cancel-button');
+                if (cancelBtn) {
+                    cancelBtn.style.backgroundColor = '#190061';
+                }
+            }
+
             setTimeout(function () {
-                listItem.style.backgroundColor = "#190061";
-            }, 100); 
-        }, index * 100);
-    }
+                // Reset background color for all but the last item
+                if (index !== listItems.length - 1) {
+                    listItem.style.backgroundColor = "#190061";
+                }
+            }, 100);
+        }, index * 50);
+    });
 }
+
+
 flashList();
+
+
+function removeSongRequest(button) {
+    let listItem = button.closest('.list-item');
+    let songName = listItem.querySelector('.list-item-text').textContent.split(' - ')[0];
+
+    fetch('/remove-song-request', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ songName: songName }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            window.location.reload();
+        } else {
+            alert('Error removing song request');
+        }
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+}
