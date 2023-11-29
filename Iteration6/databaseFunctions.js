@@ -228,6 +228,8 @@ async function loadTestData() {
         }
 
         await loadSong("Song-1.mp3", "Accumula Town", "Nintendo feat. Game Freak", "Pokemon: Black & White", ["Video Game"], "/images/album-art-accumula-town.jpg");
+        await loadSong("Song-2.mp3", "Is this ashleys theme?", "Nintendo", "Wario ware", ["Video Game"], "/images/album-art-ashleys-theme.jpg");
+        await loadSong("Song-3.mp3", "idk some harvest moon sounding jazz", "Nintendo", "harvest moon", ["Video Game"], "/images/album-art-harvest-moon.jpg");
 
         // Update current state with these values
         const currentStateCount = await CurrentStateModel.countDocuments();
