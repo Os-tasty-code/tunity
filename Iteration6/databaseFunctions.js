@@ -139,8 +139,8 @@ async function loadTestData() {
             console.log("TestDJ6 added to database");
 
             const testDJ7 = new djScheduleModel({
-                djName: "DJ Ella",
-                djCode: "a",
+                djName: "DJ Blake",
+                djCode: "b",
                 day: "wed",
                 timeSection: "Morning"
             });
@@ -210,6 +210,9 @@ async function loadTestData() {
             await testDJ14.save();
             console.log("TestDJ14 added to database");
         }
+        else {
+            console.log("DJs already added, count = " + djCount);
+        }
 
         // Check and insert test song
         const songCount = await SongModel.countDocuments();
@@ -256,6 +259,10 @@ async function clearDatabase() {
         // Delete all songs
         await SongModel.deleteMany({});
         console.log('All songs deleted.');
+
+        // Delete all DJs
+        await djScheduleModel.deleteMany({});
+        console.log("All DJs deleted.");
 
         // Delete all current state entries
         await CurrentStateModel.deleteMany({});
