@@ -227,6 +227,8 @@ async function loadTestData() {
             console.log('Test song inserted into the database.');
         }
 
+        await loadSong("Song-1.mp3", "Accumula Town", "Nintendo feat. Game Freak", "Pokemon: Black & White", ["Video Game"], "/images/album-art-accumula-town.jpg");
+
         // Update current state with these values
         const currentStateCount = await CurrentStateModel.countDocuments();
         if (currentStateCount === 0) {
@@ -287,25 +289,26 @@ async function getCurrentDJ() {
 }
 
 // O Dodart
-async function loadSong(filepath) {
-    const exists = await SongModel.countDocuments()
+async function loadSong(filename, title, artist, album, genre, albumArtUrl) {
+    const exists = await SongModel.countDocuments({ title: title });
 
-    if(exists == 2) {
-        const testSong = new SongModel({
-            title: "Accumula Town",
-            artist: "Nintendo feat. Game Freak",
-            album: "Pokemon: Black & White",
-            genre: "Video Game",
-            audioUrl: filepath,
-            albumArtUrl: "/"
+    if (exists === 0) {
+        const newSong = new SongModel({
+            title: title,
+            artist: artist,
+            album: album,
+            genre: genre,
+            audioUrl: `/songs/${filename}`,
+            albumArtUrl: albumArtUrl
         });
 
-        await testSong.save();
-        console.log("Song added")
+        await newSong.save();
+        console.log("Song added: " + title);
     } else {
-        console.log("Song has already been added")
+        console.log("Song already exists in the database: " + title);
     }
 }
+
 
 async function loadPlaylistSong() {
     const exists = await PlaylistSongModel.countDocuments()

@@ -18,7 +18,7 @@ const { getCurrentSong, getCurrentDJ, getPlaylist, loadPlaylistSong } = require(
 
 mongoose.connection.once('open', () => {
     //loads example docs into mongo if database is empty.
-    // loadTestData();
+    loadTestData();
     // loadSong("./songs/Song-3.mp3")
     //For debugging
     // clearDatabase();
