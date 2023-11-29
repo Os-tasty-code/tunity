@@ -39,10 +39,6 @@ async function loadTestData() {
                 listenerData: {
                     timeOnSite: 120,
                     songRecommendations: [
-                        { name: 'Accepted Song', status: 'ACCEPTED'},
-                        { name: 'Rejected Song', status: 'REJECTED' },
-                        { name: 'Pending Song 1', status: 'PENDING' },
-                        { name: 'Pending Song 2', status: 'PENDING' },
                         { name: 'Accepted Song', status: 'ACCEPTED', dj: 'djella'},
                         { name: 'Rejected Song', status: 'REJECTED', dj: 'djella'}, 
                         { name: 'Pending Song 1', status: 'PENDING', dj: 'djella'}, 

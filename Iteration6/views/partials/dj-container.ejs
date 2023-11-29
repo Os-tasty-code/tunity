@@ -1,9 +1,11 @@
 <div class="dj-container">
-    <figure>
-        <img class="dj-art" style="padding-left: 40px;" src="<%= djImageSrc %>" width="300" height="300"/>
-        <figcaption> <%= djName %> </figcaption>
-    </figure>
-    <div class="content-button">
-        <a href="#djs-schedule" style="color: white;"> See DJs and Schedule </a>
+    <div class="image-container">
+        <img class="dj-art" src="<%= djImageSrc %>" alt="DJ Image" />
+    </div>
+    <div class="overlay">
+        <div class="info">
+            <h2 class="name"><%= djName %></h2>
+            <a href="#djs-schedule" class="button">See DJs and Schedule</a>
+        </div>
     </div>
 </div>

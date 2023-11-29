@@ -98,7 +98,6 @@ document.onkeydown = function (event) {
 };
 
 
-//Light up req list on load (such as adding or removing element load)
 function flashList() {
     let requestsList = document.getElementById("requests-list");
     let listItems = requestsList.querySelectorAll("li");
@@ -108,11 +107,16 @@ function flashList() {
         setTimeout(function () {
             listItem.style.backgroundColor = "#3500d3";
 
-            // If it's the last item, change the cancel button color
+            // If it's the last item, change the button color
             if (index === listItems.length - 1) {
                 let cancelBtn = listItem.querySelector('.cancel-button');
+                let removeBtn = listItem.querySelector('.remove-button'); 
+
+                // Change background color of the last button
                 if (cancelBtn) {
                     cancelBtn.style.backgroundColor = '#190061';
+                } else if (removeBtn) {
+                    removeBtn.style.backgroundColor = '#190061';
                 }
             }
 
@@ -125,6 +129,7 @@ function flashList() {
         }, index * 50);
     });
 }
+
 
 
 flashList();

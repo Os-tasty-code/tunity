@@ -1,6 +1,11 @@
 <div class="artist-container">
-    <figure>
-        <img class="album-art" style="padding-left: 40px;" src="<%= albumImageSrc %>" width="300" height="300"/>
-        <figcaption> <%= albumName %> </figcaption>
-    </figure>
+    <div class="image-container">
+        <img class="album-art" src="<%= albumImageSrc %>" alt="Album Art" />
+    </div>
+    <div class="overlay">
+        <div class="info">
+            <h2 class="name"><%= songDisplay %></h2>
+            <!-- Any additional elements for the artist can be added here -->
+        </div>
+    </div>
 </div>
