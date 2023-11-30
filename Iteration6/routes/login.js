@@ -4,9 +4,14 @@ const CurrentStateModel = require('../models/CurrentState');
 const SongModel = require('../models/Song'); 
 const router = express.Router();
 
+const { getCurrentSong, getCurrentDJ, getPlaylist, loadPlaylistSong } = require('../databaseFunctions.js');
+
 //Jane Jacobs 
-router.get('/login', (req, res) => {
-    res.render('login');
+router.get('/login', async (req, res) => {
+    let playlist = await getPlaylist();
+    res.render('login', {
+        songs: playlist
+    });
 });
 
 router.post('/login', async (req, res) => {

@@ -23,7 +23,7 @@
                     </form>
                 </div>
                 <div class="grid-header">
-                    <h2>Recommended Songs</h2>
+                    <h2>Recommended Songs (Click to add a song to the playlist!)</h2>
                 </div>
 
                 <div id="grid-container" class="grid-container">
@@ -60,13 +60,13 @@
                     for(let i = 0; i < songs.length; i++) {
                         // Create button node and add innerHTML (innerHTML is stuff that goes between <></> tags).
                         // Since "elements" is an array, you select current iteration of it with [i]
-                        let button = document.createElement("button");
-                        button.classList.add("grid-item");
+                        let songbutton = document.createElement("button");
+                        songbutton.classList.add("grid-item");
                         //alert("djcode: " + djs[i].djCode);
-                        button.innerHTML = songs[i][0].title;
-                        console.log("button text: " + button.innerHTML);
-                        //button.onclick = addSong();
-                        parent.appendChild(button);
+                        songbutton.innerHTML = songs[i][0].title;
+                        console.log("button text: " + songbutton.innerHTML);
+                        songbutton.onclick = addSong;
+                        parent.appendChild(songbutton);
                     }
                     // const buttons = [
                     //     { buttonText: 'Add' },
@@ -105,12 +105,6 @@
                       alert('Song added to playlist!');
                   }
                 </script>
-          
-                <div class="btn-container">
-                    <div class="btn-holder">
-                      <button class="button" type="button" onclick="alert('Popup to delete song!')">Delete Song</button>
-                    </div>
-                </div>
             </div>
         </div>
     </body>

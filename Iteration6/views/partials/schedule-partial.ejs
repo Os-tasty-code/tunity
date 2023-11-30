@@ -9,7 +9,7 @@
 -->
 
 <div class="grid-header">
-    <h2>Master Schedule</h2>
+    <h2>Master Schedule (Click DJ Box to change)</h2>
 </div>
 <div id="grid-container" class="grid-container">
     <div class="grid-item-header">Sun</div>
@@ -21,7 +21,7 @@
     <div class="grid-item-header">Sat</div>
 </div>
 
-<script type="module">
+<script>
     // import { MongoClient } from "mongodb";
     
     // const uri = 'mongodb://127.0.0.1:27017/Tunity';
@@ -37,7 +37,7 @@
             // Create button node and add innerHTML (innerHTML is stuff that goes between <></> tags).
             // Since "elements" is an array, you select current iteration of it with [i]
             let button = document.createElement("button");
-            button.id = i;
+            //button.id = i;
             button.classList.add("grid-item-" + djs[i].djCode);
             //alert("djcode: " + djs[i].djCode);
             button.innerHTML = djs[i].djName;
@@ -59,8 +59,8 @@
         button.parentElement.closest(".cancel-dialog").close();
     }
 
-    async function submitDJ() {
-        const djs = <%- JSON.stringify(djs) %>
+    function submitDJ() {
+        console.log("submit DJ");
         var dj = document.getElementById("djcode").value;
         console.log("dj: " + dj);
         if(dj == "") {
@@ -68,37 +68,8 @@
             return false;
         }
         else {
-            //alert("Form submitted!");
-            // let buttonToChange = document.getElementById("button");
-            // button.innerHTML = dj;
-            // const database = client.db("Tunity");
-            // const movies = database.collection("djschedules");
-
-            // let djcode = "f";
-            // const query = { djName: { $regex: "DJ Ella" } };
-            // if(dj.localeCompare("DJ Ella")) {
-            //     djcode = "a";
-            // }
-            // else if(dj.localeCompare("DJ Blake")) {
-            //     djcode = "b";
-            // }
-            // else if(dj.localeCompare("DJ Ur Mom")) {
-            //     djcode = "c";
-            // }
-            // else if(dj.localeCompare("DJ JD")) {
-            //     djcode = "d";
-            // }
-            // else {
-            //     djcode = "";
-            // }
-            // const replacement = {
-            //     djName: dj,
-            //     djCode: djcode,
-            //     day: 'mon',
-            //     timeSection: 'Morning',
-            // }
-            // const result = await djs.replaceOne(query, replacement);
-            // console.log('Modified ${result.modifiedCount} document(s)');
+            alert("Form submitted!");
+            closeForm();
             return true;
         }
     }
@@ -108,6 +79,7 @@
     }
     
     function closeForm() {
+        console.log("close form");
         document.getElementById("changeDJ").style.display = "none";
     }
 </script>
