@@ -21,7 +21,12 @@
     <div class="grid-item-header">Sat</div>
 </div>
 
-<script>
+<script type="module">
+    // import { MongoClient } from "mongodb";
+    
+    // const uri = 'mongodb://127.0.0.1:27017/Tunity';
+    // const client = new MongoClient(uri);
+
     document.addEventListener("DOMContentLoaded", () => {
         // Get parent div in which you want to add buttons
         const parent = document.getElementById("grid-container");
@@ -32,6 +37,7 @@
             // Create button node and add innerHTML (innerHTML is stuff that goes between <></> tags).
             // Since "elements" is an array, you select current iteration of it with [i]
             let button = document.createElement("button");
+            button.id = i;
             button.classList.add("grid-item-" + djs[i].djCode);
             //alert("djcode: " + djs[i].djCode);
             button.innerHTML = djs[i].djName;
@@ -53,15 +59,46 @@
         button.parentElement.closest(".cancel-dialog").close();
     }
 
-    function submitDJ() {
+    async function submitDJ() {
+        const djs = <%- JSON.stringify(djs) %>
         var dj = document.getElementById("djcode").value;
         console.log("dj: " + dj);
         if(dj == "") {
-            alert("You must input a DJ code!");
+            alert("You must input a DJ name!");
             return false;
         }
         else {
-            alert("Form submitted!");
+            //alert("Form submitted!");
+            // let buttonToChange = document.getElementById("button");
+            // button.innerHTML = dj;
+            // const database = client.db("Tunity");
+            // const movies = database.collection("djschedules");
+
+            // let djcode = "f";
+            // const query = { djName: { $regex: "DJ Ella" } };
+            // if(dj.localeCompare("DJ Ella")) {
+            //     djcode = "a";
+            // }
+            // else if(dj.localeCompare("DJ Blake")) {
+            //     djcode = "b";
+            // }
+            // else if(dj.localeCompare("DJ Ur Mom")) {
+            //     djcode = "c";
+            // }
+            // else if(dj.localeCompare("DJ JD")) {
+            //     djcode = "d";
+            // }
+            // else {
+            //     djcode = "";
+            // }
+            // const replacement = {
+            //     djName: dj,
+            //     djCode: djcode,
+            //     day: 'mon',
+            //     timeSection: 'Morning',
+            // }
+            // const result = await djs.replaceOne(query, replacement);
+            // console.log('Modified ${result.modifiedCount} document(s)');
             return true;
         }
     }
@@ -80,7 +117,7 @@
       <h1>Change DJ</h1>
 
       New DJ: <input id="djcode" type="text" name="dj">
-      <input type="submit" value="Submit">
+      <input type="submit" name="submit" value="Submit">
   
       <!--<label for="dj"><b>New DJ</b></label>
       <input type="text" placeholder="Enter DJ Code" name="dj">

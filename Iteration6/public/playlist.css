@@ -24,9 +24,11 @@ body {
     
     /* Style the links inside the navigation bar */
     .topnav-right a {
+      position: relative;
+      top: 0.25vh;
       float: left;
       color: #bfbfbf;
-      padding-top: 2.25vh;
+      padding-top: 1.25vh;
       padding-left: 3vw;
       padding-right: 3vw;
       text-decoration: inherit;
@@ -69,55 +71,108 @@ body {
         font-size: 25px;
     }
     
-    /*----------------------------------------*/
-    
-    #playlist {  
-      height: 90%; 
-      width: 20%;
-      background-color: #282828; 
-      text-decoration: inherit;
-      left: 0;
-      display: block;
-      flex-direction: column;
-      position: absolute;
-      top: 10;
+ /*----------------------------------------*/
+  
+ #playlist {  
+  height: 90%; 
+  width: 20%;
+  background-color: #282828; 
+  text-decoration: inherit;
+  left: 0;
+  display: block;
+  flex-direction: column;
+  position: absolute;
+}
+
+#playlist a {
+  padding: 8px 8px 8px 10px;
+  font-size: 15px;
+  color: #767676;
+  display: block;
+  transition: 0.3s;
+  text-decoration: inherit;
+}
+
+#playlist li {
+  padding: 8px 8px 8px 10px;
+  font-size: 15px;
+  color: #767676;
+  display: block;
+  text-align: center;
+  transition: 0.3s;
+  text-decoration: inherit;
+}
+
+#playlist ol {
+  list-style: none!important;
+  padding: 0px 0px 0px 0px;
+  margin: 0;
+}
+
+#current {
+  background: #190061;
+  display: block;
+}
+
+#current a {
+  color: white;
+}
+
+.bar-background{
+    background-color: #351e7b;
+    height: 3vh;
+    border: 8px 8px 8px 8px;
+}
+
+.progress {
+  -webkit-appearance: none;
+  color: #3500d3;
+  fill: #ffffff!important;
+  height: 100%;
+  width: 100%;
+  padding: 0px;
+  display: block;
+  margin: 0;
+}
+
+.progress::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 1px;
+  height: 3vh;
+  background: #3500d3;
+  cursor: pointer;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+
+  @media screen and (-webkit-min-device-pixel-ratio:0) {
+    & {
+      overflow: hidden;
+      -webkit-appearance: none;
+      background-color: #ffffff!important;
     }
-    
-    #playlist a {
-      padding: 8px 8px 8px 10px;
-      font-size: 15px;
-      color: #767676;
-      display: block;
-      transition: 0.3s;
-      text-decoration: inherit;
+
+    &::-webkit-slider-thumb {
+      width: 1px;
+      -webkit-appearance: none;
+      height: 40px;
+      cursor: ew-resize;
+      background: #fff;
+      box-shadow: -340px 0 0 340px #3500d3, inset 0 0 0 40px #3500d3;
+      border-radius: 50%;
+      position: relative;
     }
-    
-    #playlist ol {
-      list-style: none!important;
-      padding: 0px 0px 0px 0px;
-      margin: 0;
-    }
-    
-    
-    #current {
-      background: #190061;
-      display: block;
-    }
-    
-    .bar-background{
-        background-color: #351e7b;
-        height: 3vh;
-        border: 8px 8px 8px 8px;
-    }
-    
-    .progress{
-      color: #351e7b!important;
-      background-color: #f1f1f1!important;
-      height:100%;
-      width: 33%;
-      padding: 0px;
-      display: block;
-    }
+  }
+}
+
+#toggle-song {
+  background: #190061;
+  color: #ffffff;
+  border:none;
+  float: right;
+}
   
   /*----------------------------------------*/
   
