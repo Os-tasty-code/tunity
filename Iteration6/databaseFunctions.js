@@ -213,9 +213,6 @@ async function loadTestData() {
             await testDJ14.save();
             console.log("TestDJ14 added to database");
         }
-        else {
-            console.log("DJs already added, count = " + djCount);
-        }
 
         // Load test songs if needed
         if (songCount === 0) {
