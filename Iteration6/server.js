@@ -72,7 +72,7 @@ app.get('/', async (req, res) => {
     });
 });
   
-
+// Ramsha Kapadia
 app.get('/schedule', async (req, res) => {
     const userProfilePic = "/images/user-profile-pic.png";
     const currentSong = await getCurrentSong();
@@ -87,6 +87,7 @@ app.get('/schedule', async (req, res) => {
     });
 });
 
+// Ramsha Kapadia
 app.get('/playlist', async (req, res) => {
     const userProfilePic = "/images/user-profile-pic.png";
     const currentSong = await getCurrentSong();
