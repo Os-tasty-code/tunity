@@ -24,6 +24,10 @@ mongoose.connection.once('open', () => {
             //This is safe to leave uncommented all the time, it'll just make sure the database only contains the data from loadtestdata()
             //await clearDatabase();
             //console.log('Database cleared successfully.');
+            const find = await SongModel.find({artist: "Rixton"}).exec();
+            if(find.length == 0) {
+                loadSong("Song-4.mp3", "Me and My Broken Heart", "Rixton", "Me and My Broken Heart EP", ["Pop"], "/images/mambhep.jpg")
+            }
             await loadTestData();
             console.log('Test data loaded successfully.');
         } catch (err) {
@@ -101,6 +105,7 @@ app.get('/playlist', async (req, res) => {
 app.get('/queue', async (req, res) => {
     const userProfilePic = "/images/user-profile-pic.png";
     const songs = await getPlaylist();
+    //const queue = await getQueue(); 
 
     res.render('queue', {
         userProfilePic: userProfilePic,

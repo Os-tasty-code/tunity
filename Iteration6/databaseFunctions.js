@@ -2,6 +2,7 @@ const UserModel = require('./models/User');
 const SongModel = require('./models/Song');
 const CurrentStateModel = require('./models/CurrentState');
 const PlaylistSongModel = require('./models/Playlist');
+const QueueModel = require('./models/Queue');
 
 const mongoose = require('mongoose');
 //Images stored in separate file because they are huge. (Alternatively, make a base64 converter script later to dynamically convert images to strings for the db)
@@ -20,6 +21,7 @@ async function loadTestData() {
         const currentStateCount = await CurrentStateModel.countDocuments();
         const playlistSongCount = await PlaylistSongModel.countDocuments();
         const djCount = await djScheduleModel.countDocuments();
+        const queueCount = await QueueModel.countDocuments();
         let testSong = null;
         let testDj = null; 
 
@@ -219,14 +221,14 @@ async function loadTestData() {
             testSong = new SongModel({
                 title: "Accumula Town",
                 artist: "Nintendo feat. Game Freak",
-                album: "Pokemon: Black & White",
+                album: "Pokémon: Black & White",
                 genre: ["Video Game"],
-                audioUrl: "/songs/Song-1.mp3",
+                audioUrl: "/songs/Song-3.mp3",
                 albumArtUrl: "/images/album-art-accumula-town.jpg"
             });
             await testSong.save();
-            await loadSong("Song-2.mp3", "Is this ashleys theme?", "Nintendo", "Wario ware", ["Video Game"], "/images/album-art-ashleys-theme.jpg");
-            await loadSong("Song-3.mp3", "idk some harvest moon sounding jazz", "Nintendo", "harvest moon", ["Video Game"], "/images/album-art-harvest-moon.jpg");
+            await loadSong("Song-2.mp3", "Spooktunes", "Toby Fox", "Undertale", ["Video Game"], "/images/album-art-ashleys-theme.jpg");
+            await loadSong("Song-1.mp3", "Oreburgh City (Day)", "Nintendo feat. Game Freak", "Pokémon Diamond/Pearl/Platinum", ["Video Game"], "/images/album-art-harvest-moon.jpg");
 
         }
 
@@ -246,6 +248,22 @@ async function loadTestData() {
             await currentState.save();
 
             console.log('Current state updated with test song and DJ.');
+        }
+
+        const q1 = new QueueModel({
+            song: await SongModel.find({}).exec()[0],
+            user: await UserModel.find({}).exec()[0],
+            priority: 80
+        })
+        await q1.save();
+
+        if (queueCount == 0) {
+            const q1 = new QueueModel({
+                song: await SongModel.find({}).exec()[0],
+                user: await UserModel.find({}).exec()[0],
+                priority: 80
+            })
+            await q1.save();
         }
     } catch (err) {
         console.error('Error inserting test data:', err);
@@ -370,6 +388,11 @@ async function getPlaylist() {
         songs[i] = await SongModel.find({_id: playlist[i].song}).exec();
     }
     return songs;
+}
+
+async function getQueue() {
+    let queue = await QueueModel.find().exec();
+    return
 }
 
 //Author: Ramsha Kapadia

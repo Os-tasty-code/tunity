@@ -75,7 +75,6 @@ body {
     display: block;
     flex-direction: column;
     position: absolute;
-    flex: 1;
   }
   
   #playlist a {
@@ -171,11 +170,13 @@ body {
   
   .content {
     display: flex;
+    margin-left: auto;
     flex-direction: row; /* Layout children in a row */
     justify-content: space-between; /* Adjust as needed */
     align-items: stretch; /* Align items vertically */
     height: calc(90vh); /* Adjust the height as needed */
-    width: 100%; /* Adjust the width as needed */
+    left: 20;
+    width: 80%; /* Adjust the width as needed */
     background-color: #0c0032;
     overflow: hidden;
 }
@@ -184,8 +185,8 @@ body {
     width: 40%;
     background-color: #111; /* Black*/
     text-decoration: inherit;
-    top:0;
-    left: 0;
+    top:10;
+    left: 20;
     display:flex;
     flex-direction: column;
     position: absolute;
@@ -196,12 +197,8 @@ body {
     font-size: 15px;
     color: white;
     display: block;
-    transition: 0.3s;
     text-decoration: inherit;
     }
-
-
-
 
     /* ----- Begin login/registration pages ------ */
 .login-window {
@@ -437,7 +434,7 @@ body {
       2px -2px 0 #000,
       -2px 2px 0 #000,
       2px 2px 0 #000;
-  font-size: 36px; /* Adjust size as needed */
+  font-size: 12px; /* Adjust size as needed */
   margin-left: 20px; /* Offset from left */
   margin-top: 10px; /* Offset from top */
 }
