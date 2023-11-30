@@ -153,6 +153,7 @@ app.use(login);
 app.use(logout);
 app.use(addSongRequest);
 app.use(removeSongRequest);
+app.use(schedulePartialRouter);
 
 
 app.listen(8080, () => {
