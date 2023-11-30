@@ -250,12 +250,12 @@ async function loadTestData() {
             console.log('Current state updated with test song and DJ.');
         }
 
-        const q1 = new QueueModel({
-            song: await SongModel.find({}).exec()[0],
-            user: await UserModel.find({}).exec()[0],
-            priority: 80
-        })
-        await q1.save();
+        // const q1 = new QueueModel({
+        //     song: await SongModel.find({}).exec()[0],
+        //     user: await UserModel.find({}).exec()[0],
+        //     priority: 80
+        // })
+        // await q1.save();
 
         if (queueCount == 0) {
             const q1 = new QueueModel({
@@ -392,7 +392,7 @@ async function getPlaylist() {
 
 async function getQueue() {
     let queue = await QueueModel.find().exec();
-    return
+    return queue
 }
 
 //Author: Ramsha Kapadia
