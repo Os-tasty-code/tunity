@@ -309,12 +309,17 @@ body {
 .request-container input[type="button"] {
   font-size: 24px;
   color: white;
-  background-color: #3500d3; /* Existing blue color */
+  background-color: #3500d3; 
   border: none;
   padding: 10px 20px;
   cursor: pointer;
-  width: 100%; /* Expand width */
-  font-weight: bold; /* Make text bold */
+  width: 100%;
+  font-weight: bold; 
+  transition: background-color 0.3s ease; 
+}
+
+.request-container input[type="button"]:hover {
+  background-color: #190061; 
 }
 
 
@@ -442,6 +447,7 @@ body {
   margin-top: 10px; /* Offset from top */
 }
 
+.dj-schedule-button,
 .button {
   color: white;
   background-color: #3500d3;
@@ -474,6 +480,7 @@ body {
     overflow: hidden;
     height: 50%; /* Adjust height as needed */
 }
+
 /*DJ container */
 .image-container {
     position: relative;
@@ -482,7 +489,15 @@ body {
     height: 100%;
 }
 
+
+.dj-container:hover .overlay,
+.artist-container:hover .overlay {
+    opacity: 0.35; 
+    cursor: pointer;
+}
+
 .overlay {
+    transition: opacity 0.5s ease; 
     position: absolute;
     top: 0;
     left: 0;
@@ -607,3 +622,107 @@ body {
   color: #e3f2fd; 
 }
 /* ----- End default homepage ----- */
+
+/*Schedule modal*/
+.modal {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color:  #282828;
+    border-radius: 10px;
+    padding: 20px;
+    width: 50%;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5); 
+}
+  .grid-header {
+    text-align: center;
+    font-size: 20px;
+    color: #ffffff;
+  }
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto;
+    background-color: #282828;
+    padding: 10px;
+  }
+
+  .grid-item-header {
+    background-color: #3500d3;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 20px;
+    text-align: center;
+    color: #ffffff;
+  }
+
+  .grid-item-a {
+    background-color: #0c0032;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 15px;
+    text-align: center;
+    color: #e3e3e3;
+  }
+
+  .grid-item-b {
+    background-color: #190061;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 15px;
+    text-align: center;
+    color: #e3e3e3;
+  }
+
+  .grid-item-c {
+    background-color: #200080;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 15px;
+    text-align: center;
+    color: #e3e3e3;
+  }
+
+  .grid-item-d {
+    background-color: #28029a;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 15px;
+    text-align: center;
+    color: #e3e3e3;
+  }
+
+  .grid-item-none {
+    background-color: #7c51ff;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 15px;
+    text-align: center;
+    color: #e3e3e3;
+  }
+
+
+.close-btn {
+  float: right;
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  background-color: red; 
+  border-radius: 5px; 
+  padding: 5px 10px; 
+  margin: -10px -10px 10px 10px;
+}
+
+/*Schedule modal*/

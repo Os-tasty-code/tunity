@@ -6,6 +6,9 @@ const login = require('./routes/login');
 const logout = require('./routes/logout');
 const addSongRequest = require('./routes/add-song-request');
 const removeSongRequest = require('./routes/remove-song-request');
+const schedulePartialRouter = require('./routes/schedule-partial');
+
+
 const session = require('express-session');
 
 

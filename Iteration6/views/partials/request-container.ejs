@@ -5,9 +5,9 @@
         <input type="button" value="Submit" id="submitButton" onclick="changeColor(this)">
     </form>
     <ol id="requests-list">
-        <% for (let i = 0; i < songs.length; i++) { %>
+        <% for (let i = 0; i < recSongs.length; i++) { %>
             <li class="list-item">
-                <span class="list-item-text"><%= songs[i] %> - <%= statuses[i] %></span>
+                <span class="list-item-text"><%= recSongs[i] %> - <%= statuses[i] %></span>
                 
                 <% if (statuses[i] === 'ACCEPTED') { %>
                     <button class="remove-button" onclick="removeSongRequest(this)">Remove</button>

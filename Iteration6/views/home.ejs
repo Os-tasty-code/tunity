@@ -3,10 +3,13 @@
     <%- include('partials/head', { title: 'Tunity - Listener Homepage', scripts: ['listener'] }) %>
     <body>
         <%- include('partials/navbar', {userProfilePic: userProfilePic}) %>
-        <!--removed playlist partial for now-->
+        <%- include('partials/playlist', songs) -%>
         <div class="content">
             <%- include('partials/left-container') %>
             <%- include('partials/request-container') %>
         </div>
     </body>
+<div id="scheduleModal" class="modal" style="display: none;">
+</div>
+
 </html>

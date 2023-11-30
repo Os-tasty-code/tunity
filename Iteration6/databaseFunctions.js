@@ -236,8 +236,8 @@ async function loadTestData() {
         // Load songs into playlist if needed
         if (playlistSongCount === 0) {
             await loadPlaylistSong("Accumula Town", 10);
-            await loadPlaylistSong("Is this ashleys theme?", 10);
-            await loadPlaylistSong("idk some harvest moon sounding jazz", 10);
+            await loadPlaylistSong("Spooktunes", 10);
+            await loadPlaylistSong("Oreburgh City (Day)", 10);
         }
 
         // Update current state if needed

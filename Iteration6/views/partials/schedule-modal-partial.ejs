@@ -1,0 +1,23 @@
+<div id="scheduleModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <div class="grid-header">
+            <h2>Schedule</h2>
+        </div>
+        <div id="grid-container" class="grid-container">
+            <div class="grid-item-header">Sun</div>
+            <div class="grid-item-header">Mon</div>
+            <div class="grid-item-header">Tue</div>  
+            <div class="grid-item-header">Wed</div>
+            <div class="grid-item-header">Thu</div>
+            <div class="grid-item-header">Fri</div>  
+            <div class="grid-item-header">Sat</div>
+
+            <% djs.forEach(dj => { %>
+                <button class="grid-item-<%= dj.djCode %>">
+                    <%= dj.djName %>
+                </button>
+            <% }); %>
+        </div>
+    </div>
+</div>
