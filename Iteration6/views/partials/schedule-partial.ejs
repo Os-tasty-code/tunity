@@ -9,7 +9,7 @@
 -->
 
 <div class="grid-header">
-    <h2>Master Schedule</h2>
+    <h2>Master Schedule (Click DJ Box to change)</h2>
 </div>
 <div id="grid-container" class="grid-container">
     <div class="grid-item-header">Sun</div>
@@ -22,6 +22,11 @@
 </div>
 
 <script>
+    // import { MongoClient } from "mongodb";
+    
+    // const uri = 'mongodb://127.0.0.1:27017/Tunity';
+    // const client = new MongoClient(uri);
+
     document.addEventListener("DOMContentLoaded", () => {
         // Get parent div in which you want to add buttons
         const parent = document.getElementById("grid-container");
@@ -32,6 +37,7 @@
             // Create button node and add innerHTML (innerHTML is stuff that goes between <></> tags).
             // Since "elements" is an array, you select current iteration of it with [i]
             let button = document.createElement("button");
+            //button.id = i;
             button.classList.add("grid-item-" + djs[i].djCode);
             //alert("djcode: " + djs[i].djCode);
             button.innerHTML = djs[i].djName;
@@ -54,14 +60,16 @@
     }
 
     function submitDJ() {
+        console.log("submit DJ");
         var dj = document.getElementById("djcode").value;
         console.log("dj: " + dj);
         if(dj == "") {
-            alert("You must input a DJ code!");
+            alert("You must input a DJ name!");
             return false;
         }
         else {
             alert("Form submitted!");
+            closeForm();
             return true;
         }
     }
@@ -71,6 +79,7 @@
     }
     
     function closeForm() {
+        console.log("close form");
         document.getElementById("changeDJ").style.display = "none";
     }
 </script>
@@ -80,7 +89,7 @@
       <h1>Change DJ</h1>
 
       New DJ: <input id="djcode" type="text" name="dj">
-      <input type="submit" value="Submit">
+      <input type="submit" name="submit" value="Submit">
   
       <!--<label for="dj"><b>New DJ</b></label>
       <input type="text" placeholder="Enter DJ Code" name="dj">

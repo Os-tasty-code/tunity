@@ -6,6 +6,9 @@ const login = require('./routes/login');
 const logout = require('./routes/logout');
 const addSongRequest = require('./routes/add-song-request');
 const removeSongRequest = require('./routes/remove-song-request');
+const schedulePartialRouter = require('./routes/schedule-partial');
+
+
 const session = require('express-session');
 
 
@@ -72,7 +75,7 @@ app.get('/', async (req, res) => {
     });
 });
   
-
+// Ramsha Kapadia
 app.get('/schedule', async (req, res) => {
     const userProfilePic = "/images/user-profile-pic.png";
     const currentSong = await getCurrentSong();
@@ -87,6 +90,7 @@ app.get('/schedule', async (req, res) => {
     });
 });
 
+// Ramsha Kapadia
 app.get('/playlist', async (req, res) => {
     const userProfilePic = "/images/user-profile-pic.png";
     const currentSong = await getCurrentSong();
@@ -149,6 +153,7 @@ app.use(login);
 app.use(logout);
 app.use(addSongRequest);
 app.use(removeSongRequest);
+app.use(schedulePartialRouter);
 
 
 app.listen(8080, () => {

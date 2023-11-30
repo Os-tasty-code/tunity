@@ -11,6 +11,7 @@
     </head>
     <body>
         <%- include('partials/producer-navbar') %>
+        <%- include('partials/playlist', songs) -%>
         <!--removed playlist partial for now-->
         <div class="content">
             <%- include('partials/schedule-partial', {djs: djs, songs: songs}) %>

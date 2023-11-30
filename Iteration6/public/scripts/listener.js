@@ -158,3 +158,24 @@ function removeSongRequest(button) {
         console.error('Error:', error);
     });
 }
+
+
+async function loadScheduleData() {
+    try {
+        const response = await fetch('/schedule-modal-data');
+        if (response.ok) {
+            const scheduleHtml = await response.text();
+            const modal = document.getElementById('scheduleModal');
+            modal.innerHTML = scheduleHtml;
+            modal.style.display = 'block'; 
+        } else {
+            console.error('Failed to load schedule data');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+function closeModal() {
+    document.getElementById('scheduleModal').style.display = 'none';
+}
