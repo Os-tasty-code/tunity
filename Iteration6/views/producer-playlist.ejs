@@ -4,8 +4,6 @@
         <title>Tunity</title>
         <link rel="stylesheet" href="/playlist.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
-        
-          <script src="/scripts/playlist.js"></script>
       </head>
       <body>
         <%- include('partials/producer-navbar') %>
@@ -26,29 +24,87 @@
                 <div class="grid-header">
                     <h2>Recommended Songs</h2>
                 </div>
+
                 <div id="grid-container" class="grid-container">
-                    <div class="grid-item">Song Name</div>
-                    <div class="grid-item">Song Name</div>
-                    <div class="grid-item">Song Name</div>
-                    <audio controls>
-                        <source src="horse.ogg" type="audio/ogg">
-                        <source src="horse.mp3" type="audio/mpeg">
-                      Your browser does not support the audio element.
-                    </audio>
-                    <audio controls>
-                        <source src="horse.ogg" type="audio/ogg">
-                        <source src="horse.mp3" type="audio/mpeg">
-                      Your browser does not support the audio element.
-                    </audio>
-                    <audio controls>
-                        <source src="horse.ogg" type="audio/ogg">
-                        <source src="horse.mp3" type="audio/mpeg">
-                      Your browser does not support the audio element.
-                    </audio>
-                    <!-- <div class="grid-item-button">Add</div>
-                    <div class="grid-item-button">Add</div>
-                    <div class="grid-item-button">Add</div> -->
+                  <!-- <div class="grid-item">Song Name</div>
+                  <div class="grid-item">Song Name</div>
+                  <div class="grid-item">Song Name</div> -->
+                  <!-- <audio controls>
+                      <source src="horse.ogg" type="audio/ogg">
+                      <source src="horse.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                  </audio>
+                  <audio controls>
+                      <source src="horse.ogg" type="audio/ogg">
+                      <source src="horse.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                  </audio>
+                  <audio controls>
+                      <source src="horse.ogg" type="audio/ogg">
+                      <source src="horse.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                  </audio> -->
+                  <!-- <div class="grid-item-button">Add</div>
+                  <div class="grid-item-button">Add</div>
+                  <div class="grid-item-button">Add</div> -->
                 </div>
+
+                <script>
+                  document.addEventListener("DOMContentLoaded", () => {
+                    // Get parent div in which you want to add buttons
+                    const parent = document.getElementById("grid-container");
+                    const songs = <%- JSON.stringify(songs) %>
+                    // In for loop, set "i" to be lower than number length of array.
+                    //alert("djs length: " + djs.length);
+                    for(let i = 0; i < songs.length; i++) {
+                        // Create button node and add innerHTML (innerHTML is stuff that goes between <></> tags).
+                        // Since "elements" is an array, you select current iteration of it with [i]
+                        let button = document.createElement("button");
+                        button.classList.add("grid-item");
+                        //alert("djcode: " + djs[i].djCode);
+                        button.innerHTML = songs[i][0].title;
+                        console.log("button text: " + button.innerHTML);
+                        //button.onclick = addSong();
+                        parent.appendChild(button);
+                    }
+                    // const buttons = [
+                    //     { buttonText: 'Add' },
+                    //     { buttonText: 'Add' },
+                    //     { buttonText: 'Add' },
+                    // ]
+                    // // Get parent div in which you want to add buttons
+                    // const parent = document.getElementById("grid-container");
+                    
+                    // // In for loop, set "i" to be lower than number length of array.
+                    // for(let i = 0; i < buttons.length; i++) {
+                    //     // Create button node and add innerHTML (innerHTML is stuff that goes between <></> tags).
+                    //     // Since "elements" is an array, you select current iteration of it with [i]
+                    //     let button = document.createElement("button");
+                    //     button.classList.add("grid-item-button");
+                    //     button.innerHTML = buttons[i].buttonText;
+                    //     console.log("button text: " + button.innerHTML);
+                    //     button.onclick = addSong;
+                    //     parent.appendChild(button);
+                    // }
+                  }, 1)
+
+                  function showCancelDialog(button) {
+                    button.parentElement.querySelector(".cancel-dialog").showModal();
+                  }
+
+                  function closeCancelDialog(button) {
+                    button.parentElement.closest(".cancel-dialog").close();
+                  }
+
+                  function cancelRequest(button) {
+                    button.parentElement.closest(".cancel-dialog").close();
+                  }
+
+                  function addSong() {
+                      alert('Song added to playlist!');
+                  }
+                </script>
+          
                 <div class="btn-container">
                     <div class="btn-holder">
                       <button class="button" type="button" onclick="alert('Popup to delete song!')">Delete Song</button>

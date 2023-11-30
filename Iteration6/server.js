@@ -83,9 +83,18 @@ app.get('/schedule', async (req, res) => {
     });
 });
 
-app.get('/playlist', (req, res) => {
+app.get('/playlist', async (req, res) => {
     const userProfilePic = "/images/user-profile-pic.png";
-    res.render('producer-playlist', { userProfilePic });
+    const currentSong = await getCurrentSong();
+    const currentDJ = await getCurrentDJ();
+    const djSchedule = await getDJSchedule();
+    let playlist = await getPlaylist();
+
+    res.render('producer-playlist', { 
+        userProfilePic,
+        djs: djSchedule,
+        songs: playlist
+    });
 });
 
 //O Dodart
